@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   actorName: Player
+  test: 0
   _inventorySlots: 3
   _throwCooldown: 2
   _throwForce: 10

@@ -7,11 +7,12 @@ using UnityEngine;
 /// </summary>
 public class Actor : MonoBehaviour 
 {
-    #region Data Attributes
-    [SerializeField] private ActorData _data;
-    #endregion
+    // was causing errors so i moved it to "Player.cs" maybe this is bad but .-.
+    //#region Data Attributes
+    //[SerializeField] private ActorData _data;
+    //#endregion
 
-    #region Accessors
-    public ActorData Data => Data;
-    #endregion
+    //#region Accessors
+    //public ActorData Data => Data;
+    //#endregion
 }

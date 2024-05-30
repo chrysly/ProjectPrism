@@ -9,4 +9,8 @@ public class ActorData : ScriptableObject
 
     // Accessors
     public string ActorName => actorName;
+
+    //test
+    [SerializeField] private int test = 0;
+    public int Test => test;
 }

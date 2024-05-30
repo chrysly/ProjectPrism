@@ -581,21 +581,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7657763316295368380, guid: e3c773084cedd9445833a65efc1ac700,
         type: 3}
-      propertyPath: currOrbs.Array.size
-      value: 2
+      propertyPath: currOrbs.Array.data[2]
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 7657763316295368380, guid: e3c773084cedd9445833a65efc1ac700,
-        type: 3}
-      propertyPath: currOrbs.Array.data[0]
-      value: 
-      objectReference: {fileID: 4309414488823528469, guid: ab6a19fb12f7d6d468ad026b5e949395,
-        type: 3}
-    - target: {fileID: 7657763316295368380, guid: e3c773084cedd9445833a65efc1ac700,
-        type: 3}
-      propertyPath: currOrbs.Array.data[1]
-      value: 
-      objectReference: {fileID: 4309414488823528469, guid: 216ed2801601ee54086bd2c0e998de42,
-        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

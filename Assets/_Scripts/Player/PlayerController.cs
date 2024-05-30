@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
 
     private bool _canThrow = true;
 
-    private PlayerData _playerData;
     private PlayerActionMap _playerActionMap;
     private Vector3 _moveVector;
 
@@ -27,9 +26,6 @@ public class PlayerController : MonoBehaviour
         _playerActionMap = new PlayerActionMap();
         _playerActionMap.Player.Enable();
         _playerActionMap.Player.Throw.performed += PlayerThrow;
-
-        // change this later prolly
-        _playerData = (PlayerData)_player.Data;
     }
 
     void FixedUpdate() {
@@ -54,7 +50,6 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerMove() {
         Vector2 inputVector = _playerActionMap.Player.Movement.ReadValue<Vector2>();
-        Debug.Log(inputVector);
 
         _moveVector = new Vector3(inputVector.x, 0, inputVector.y);
 
@@ -73,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Throw() {
         _canThrow = false;
-        yield return _playerData.ThrowCooldown;
+        yield return _player.ThrowCooldown;
         _canThrow = true;
     }
 }
