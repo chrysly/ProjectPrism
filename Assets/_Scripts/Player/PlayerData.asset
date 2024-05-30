@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorName: Player
   _inventorySlots: 3
+  _throwCooldown: 2
+  _throwForce: 10
+  _throwDistance: 10

@@ -9,9 +9,9 @@ public class Actor : MonoBehaviour
 {
     #region Data Attributes
     [SerializeField] private ActorData _data;
-    #endregion Data Attributes
+    #endregion
 
     #region Accessors
     public ActorData Data => Data;
-    #endregion Accessors
+    #endregion
 }

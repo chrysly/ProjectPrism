@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class Player : Actor
 {
-    public List<GameObject> currOrbs { get; protected set; }
+    [SerializeField] public List<GameObject> currOrbs;  // testing
+    //[SerializeField] public List<GameObject> currOrbs { get; protected set; }
 }

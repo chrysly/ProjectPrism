@@ -8,11 +8,16 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerController : MonoBehaviour 
 {
+    [SerializeField] private Player _player;
+    [SerializeField] private Transform _throwPoint;
     [SerializeField] private float _speed;
     [SerializeField] private float _turnSpeed;
     [SerializeField] private int _camAngleSkew = 45;    // camera isometric skew in degrees
     private Rigidbody _rb;
 
+    private bool _canThrow = true;
+
+    private PlayerData _playerData;
     private PlayerActionMap _playerActionMap;
     private Vector3 _moveVector;
 
@@ -21,6 +26,10 @@ public class PlayerController : MonoBehaviour
         // get player inputs
         _playerActionMap = new PlayerActionMap();
         _playerActionMap.Player.Enable();
+        _playerActionMap.Player.Throw.performed += PlayerThrow;
+
+        // change this later prolly
+        _playerData = (PlayerData)_player.Data;
     }
 
     void FixedUpdate() {
@@ -50,5 +59,21 @@ public class PlayerController : MonoBehaviour
         _moveVector = new Vector3(inputVector.x, 0, inputVector.y);
 
         _rb.MovePosition(transform.position + (transform.forward * _moveVector.magnitude) * _speed * Time.deltaTime);
+    }
+    
+    private void PlayerThrow(InputAction.CallbackContext context) {
+        if (_canThrow) {
+            StartCoroutine(Throw());
+            if (_player.currOrbs.Count > 0) {
+                Instantiate(_player.currOrbs[0], _throwPoint);
+                _player.currOrbs.RemoveAt(0);
+            }
+        }
+    }
+
+    IEnumerator Throw() {
+        _canThrow = false;
+        yield return _playerData.ThrowCooldown;
+        _canThrow = true;
     }
 }
