@@ -10,9 +10,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private Transform _throwPoint;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _turnSpeed;
-    [SerializeField] private int _camAngleSkew = 45;    // camera isometric skew in degrees
     private Rigidbody _rb;
 
     private bool _canThrow = true;
@@ -37,13 +34,13 @@ public class PlayerController : MonoBehaviour
     private void PlayerLook() {
         if (_moveVector != Vector3.zero) {
             //fixes isometric jank
-            var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, _camAngleSkew, 0));
+            var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, _player.CameraAngleSkew, 0));
             var skewedInput = matrix.MultiplyPoint3x4(_moveVector);
 
             var relative = (transform.position + skewedInput) - transform.position; // angle between where we're moving
             var rot = Quaternion.LookRotation(relative, Vector3.up);    // axis which we rotate around
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed * Time.deltaTime);  // if want lerp
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _player.TurnSpeed * Time.deltaTime);  // if want lerp
             //transform.rotation = rot;
         }
     }
@@ -53,17 +50,20 @@ public class PlayerController : MonoBehaviour
 
         _moveVector = new Vector3(inputVector.x, 0, inputVector.y);
 
-        _rb.MovePosition(transform.position + (transform.forward * _moveVector.magnitude) * _speed * Time.deltaTime);
+        _rb.MovePosition(transform.position + (transform.forward * _moveVector.magnitude) * _player.MoveSpeed * Time.deltaTime);
     }
     
     private void PlayerThrow(InputAction.CallbackContext context) {
-        if (_canThrow) {
-            StartCoroutine(Throw());
-            if (_player.currOrbs.Count > 0) {
-                Instantiate(_player.currOrbs[0], _throwPoint);
-                _player.currOrbs.RemoveAt(0);
-            }
-        }
+        //if (_canThrow && _player.heldOrbs.Count > 0) {
+        //    StartCoroutine(Throw());
+        //    _player.heldOrbs[0].SetActive(true);
+        //    Debug.Log("try to throw: " + _player.heldOrbs[0]);
+            //_player.heldOrbs[0].GetComponent<OrbThrow>().ThrowOrb();
+
+            //// remove from curr orbs and add to thrown orbs list
+            //_player.thrownOrbs.Add(_player.heldOrbs[0]);
+            //_player.heldOrbs.RemoveAt(0);
+        //}
     }
 
     IEnumerator Throw() {
