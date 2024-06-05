@@ -54,16 +54,15 @@ public class PlayerController : MonoBehaviour
     }
     
     private void PlayerThrow(InputAction.CallbackContext context) {
-        //if (_canThrow && _player.heldOrbs.Count > 0) {
-        //    StartCoroutine(Throw());
-        //    _player.heldOrbs[0].SetActive(true);
-        //    Debug.Log("try to throw: " + _player.heldOrbs[0]);
-            //_player.heldOrbs[0].GetComponent<OrbThrow>().ThrowOrb();
+        if (_canThrow && _player.HeldOrbCount() > 0) {
+            StartCoroutine(Throw());
 
-            //// remove from curr orbs and add to thrown orbs list
-            //_player.thrownOrbs.Add(_player.heldOrbs[0]);
-            //_player.heldOrbs.RemoveAt(0);
-        //}
+            _player.GetOrb().SetActive(true);
+            _player.GetOrb().GetComponent<OrbThrow>().ThrowOrb();
+
+            // remove from curr orbs and add to thrown orbs list
+            _player.AddThrownOrb(_player.RemoveHeldOrb(_player.GetOrb()));
+        }
     }
 
     IEnumerator Throw() {

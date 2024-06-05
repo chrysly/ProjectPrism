@@ -14,6 +14,7 @@ public class Player : Actor
     private float _throwCooldown;
     private float _throwForce;
     private float _throwDistance;
+    [SerializeField] private Transform _throwPoint;
 
     [Header("Movement Variables")]
     private float _moveSpeed;
@@ -28,21 +29,19 @@ public class Player : Actor
     public float MoveSpeed => _moveSpeed;
     public float TurnSpeed => _turnSpeed;
     public int CameraAngleSkew => _camAngleSkew;
+    public Transform ThrowPoint => _throwPoint;
     #endregion
 
     [SerializeField] private List<GameObject> heldOrbs;
     [SerializeField] private List<GameObject> thrownOrbs;
 
-    [SerializeField] private List<GameObject> startingOrbs;
+    public List<GameObject> startingOrbs; //test
+
     //[SerializeField] public List<GameObject> currOrbs { get; protected set; }
 
     void Start() {
         InitializeAttributes();
         InitialSpawnOrbs();
-
-        foreach (GameObject obj in startingOrbs) {
-
-        }
     }
 
     protected void InitializeAttributes() {
@@ -56,27 +55,38 @@ public class Player : Actor
     }
 
     protected void InitialSpawnOrbs() {
-        //foreach (GameObject obj in heldOrbs) {
-        //    GameObject instantiatedChild = Instantiate(obj);
-        //    heldOrbs.Add(instantiatedChild);
-        //    instantiatedChild.SetActive(false);
-        //}
+        foreach (GameObject obj in startingOrbs) {
+            GameObject instantiatedChild = Instantiate(obj);
+            AddHeldOrb(instantiatedChild);
+            instantiatedChild.SetActive(false);
+        }
     }
 
-    // functions to move orb arounds in different states
+    #region Custom List Functions
+    public int HeldOrbCount() {
+        return heldOrbs.Count;
+    }
+
+    public GameObject GetOrb() {
+        return heldOrbs[0];
+    }
+    
     public void AddHeldOrb(GameObject orb) {
         heldOrbs.Add(orb);
     }
 
-    //public GameObject RemoveHeldOrb(GameObject orb) {
-    //    GameObject returnObj = 
-    //}
-
-    public void AddThrownOrb(GameObject orb) {
-        heldOrbs.Add(orb);
+    public GameObject RemoveHeldOrb(GameObject orb) {
+        heldOrbs.Remove(orb);
+        return orb;
     }
 
-    //public GameObject RemoveThrownOrb(GameObject orb) {
+    public void AddThrownOrb(GameObject orb) {
+        thrownOrbs.Add(orb);
+    }
 
-    //}
+    public GameObject RemoveThrownOrb(GameObject orb) {
+        thrownOrbs.Remove(orb);
+        return orb;
+    }
+    #endregion
 }
