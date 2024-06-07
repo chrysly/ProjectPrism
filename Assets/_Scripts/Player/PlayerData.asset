@@ -18,3 +18,6 @@ MonoBehaviour:
   _throwCooldown: 2
   _throwForce: 10
   _throwDistance: 10
+  _moveSpeed: 5
+  _turnSpeed: 1500
+  _camAngleSkew: 45

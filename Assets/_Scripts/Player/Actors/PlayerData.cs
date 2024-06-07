@@ -6,13 +6,24 @@ using UnityEngine;
 public class PlayerData : ActorData 
 {
     [SerializeField] private int _inventorySlots = 1;
+
+    [Header("Throw Variables")]
     [SerializeField] private float _throwCooldown = 0;
     [SerializeField] private float _throwForce = 0;
     [SerializeField] private float _throwDistance = 0;
 
-    // Accessors
+    [Header("Movement Variables")]
+    [SerializeField] private float _moveSpeed = 5;
+    [SerializeField] private float _turnSpeed = 1500;
+    [SerializeField] private int _camAngleSkew = 45;    // camera isometric skew in degrees
+
+    // Accessors ---
     public int InventorySlots => _inventorySlots;
     public float ThrowCooldown => _throwCooldown;
     public float ThrowForce => _throwForce;
     public float ThrowDistance => _throwDistance;
+
+    public float MoveSpeed => _moveSpeed;
+    public float TurnSpeed => _turnSpeed;
+    public int CameraAngleSkew => _camAngleSkew;
 }
