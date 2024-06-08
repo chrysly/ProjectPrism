@@ -15,16 +15,12 @@ public class OrbThrow : MonoBehaviour {
     private Transform _t;   // transform of this
     private Transform _throwPoint;
 
-    //void Awake() {
-    //    Debug.Log("start for orb");
-    //    _sender = GameObject.FindGameObjectWithTag("Player");
-    //    _player = _sender.GetComponent<Player>();
-    //    _t = this.transform;
-    //    _senderTransform = _sender.transform;
-    //    Debug.Log("END start for orb");
-    //}
+    void FixedUpdate() {
+        MoveOrb();
+    }
 
-    void Update() {
+    #region Throwing Orbs
+    private void MoveOrb() {
         if (_thrown) {
             _t.position = Vector3.MoveTowards(_t.position, _throwDirection, _player.ThrowForce * Time.deltaTime);
         } else {
@@ -57,5 +53,10 @@ public class OrbThrow : MonoBehaviour {
         _thrown = true;
         yield return new WaitForSeconds(1.5f);
         _thrown = false;
+    }
+    #endregion
+
+    void OnTriggerEnter(Collider other) {
+        
     }
 }
