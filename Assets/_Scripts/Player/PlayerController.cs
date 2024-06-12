@@ -8,17 +8,23 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerController : MonoBehaviour 
 {
+    private CharacterController _controller;
     [SerializeField] private Player _player;
     [SerializeField] private Transform _throwPoint;
-    private Rigidbody _rb;
 
     private bool _canThrow = true;
 
     private PlayerActionMap _playerActionMap;
     private Vector3 _moveVector;
 
+    /// <summary>
+    /// Transform of this object
+    /// </summary>
+    private Transform _t;
+
     void Awake() {
-        _rb = GetComponent<Rigidbody>();
+        _t = this.transform;
+        _controller = GetComponent<CharacterController>();
         // get player inputs
         _playerActionMap = new PlayerActionMap();
         _playerActionMap.Player.Enable();
@@ -37,21 +43,19 @@ public class PlayerController : MonoBehaviour
             var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, _player.CameraAngleSkew, 0));
             var skewedInput = matrix.MultiplyPoint3x4(_moveVector);
 
-            var relative = (transform.position + skewedInput) - transform.position; // angle between where we're moving
+            var relative = (_t.position + skewedInput) - _t.position; // angle between where we're moving
             var rot = Quaternion.LookRotation(relative, Vector3.up);    // axis which we rotate around
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _player.TurnSpeed * Time.deltaTime);  // if want lerp
+            _t.rotation = Quaternion.RotateTowards(_t.rotation, rot, _player.TurnSpeed * Time.deltaTime);  // if want lerp
             //transform.rotation = rot;
         }
     }
 
     private void PlayerMove() {
         Vector2 inputVector = _playerActionMap.Player.Movement.ReadValue<Vector2>();
-
         _moveVector = new Vector3(inputVector.x, 0, inputVector.y);
 
-        // perhaps change this to not use move position
-        _rb.MovePosition(transform.position + (transform.forward * _moveVector.magnitude) * _player.MoveSpeed * Time.deltaTime);
+        _controller.Move(_t.forward * _moveVector.magnitude * Time.deltaTime * _player.MoveSpeed);
     }
     
     private void PlayerThrow(InputAction.CallbackContext context) {

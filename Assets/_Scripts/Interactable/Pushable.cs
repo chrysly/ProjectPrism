@@ -33,8 +33,11 @@ public class Pushable : Interactable
 
     protected void PushObject() {
         if (!_isBeingPushed) {
-            _destination = _t.position + AlignToGrid(_hitData.PushDirection).normalized;
+            //_destination = _t.position + AlignToGrid(_hitData.PushDirection.normalized);
+            _destination = _t.position + AlignToGrid(_hitData.PushDirection);
             _isBeingPushed = true;
+
+            Debug.Log("destination: " + AlignToGrid(_hitData.PushDirection.normalized));
         }
     }
 
@@ -42,8 +45,8 @@ public class Pushable : Interactable
         input.y = 0;
 
         // determine which direction value is greater
-        if (Mathf.Abs(input.x) >= Mathf.Abs(input.z)) { input.z = 0; }
-        else { input.x = 0; }
+        //if (Mathf.Abs(input.x) >= Mathf.Abs(input.z)) { input.z = 0; }
+        //else { input.x = 0; }
 
         return input;
     }

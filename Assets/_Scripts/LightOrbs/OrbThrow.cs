@@ -26,6 +26,14 @@ public class OrbThrow : MonoBehaviour {
     void FixedUpdate() {
         MoveOrb();
     }
+
+    public void OrbOff() {
+        this.gameObject.SetActive(false);
+    }
+
+    public void OrbOn() {
+        this.gameObject.SetActive(true);    // does this work???
+    }
     
     // want to refactor how vars are taken from player SO and used here as variables
     #region Throwing Orbs
@@ -42,7 +50,7 @@ public class OrbThrow : MonoBehaviour {
         if (!_thrown && Vector3.Distance(_throwPoint.position, _t.position) < _collectRadius) {
             _animStartTime = 0;
             _player.AddHeldOrb(_player.RemoveThrownOrb(this.gameObject));
-            this.gameObject.SetActive(false);
+            OrbOff();
         }
     }
 
@@ -58,6 +66,8 @@ public class OrbThrow : MonoBehaviour {
         this.transform.position = _throwPoint.position;
         _throwDirection = new Vector3(_throwPoint.position.x, _throwPoint.position.y, _throwPoint.position.z) + _throwPoint.forward * _player.ThrowDistance;
         StartCoroutine(Thrown());
+
+        Debug.Log("Throw direction: " + _throwDirection);
     }
 
     IEnumerator Thrown() {

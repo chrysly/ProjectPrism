@@ -9,7 +9,8 @@ public abstract class Interactable : MonoBehaviour
 {
     [SerializeField] protected string _objectName;
     [SerializeField] protected bool _canHoldOrb;
-    protected GameObject _currentHeldOrb;
+    [SerializeField] protected int _maxHeldOrbs;
+    protected List<GameObject> _currentHeldOrbs = new List<GameObject>();
 
     protected OrbThrownData _hitData;
 
@@ -24,25 +25,21 @@ public abstract class Interactable : MonoBehaviour
 
     public virtual void InteractAction(OrbThrownData data) {
         _hitData = data;
+        HoldOrb();
     }
 
     protected void HoldOrb() {
         if (_canHoldOrb) {
-
+            if (_currentHeldOrbs.Count < _maxHeldOrbs) {
+                _currentHeldOrbs.Add(_hitData.OrbObject);
+                _hitData.OrbObject.GetComponent<OrbThrow>().OrbOff();
+            } else {
+                // swap orbs
+                _currentHeldOrbs[0].GetComponent<OrbThrow>().OrbOn();
+                _currentHeldOrbs.Remove(_currentHeldOrbs[0]);
+                _currentHeldOrbs.Add(_hitData.OrbObject);
+                _hitData.OrbObject.GetComponent<OrbThrow>().OrbOff();
+            }
         }
     }
-
-    ///// <summary>
-    ///// Gets the object this interactable was hit by
-    ///// </summary>
-    //protected void GetHitObject(OrbThrownData data) {
-    //    _hitData = data.OrbObject;
-
-    //    // if this object can hold orbs, store that orb
-    //    if (_canHoldOrb && data.OrbObject.GetComponent<OrbThrow>()) { HoldOrb(data.OrbObject); }
-    //}
-
-    //protected void HoldOrb(GameObject orb) {
-    //    _currentHeldOrb = orb;
-    //}
 }
