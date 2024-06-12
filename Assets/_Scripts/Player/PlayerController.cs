@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
 
         _moveVector = new Vector3(inputVector.x, 0, inputVector.y);
 
+        // perhaps change this to not use move position
         _rb.MovePosition(transform.position + (transform.forward * _moveVector.magnitude) * _player.MoveSpeed * Time.deltaTime);
     }
     

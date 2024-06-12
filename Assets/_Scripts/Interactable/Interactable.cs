@@ -26,6 +26,12 @@ public abstract class Interactable : MonoBehaviour
         _hitData = data;
     }
 
+    protected void HoldOrb() {
+        if (_canHoldOrb) {
+
+        }
+    }
+
     ///// <summary>
     ///// Gets the object this interactable was hit by
     ///// </summary>
