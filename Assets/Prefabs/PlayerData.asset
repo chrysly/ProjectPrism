@@ -16,8 +16,8 @@ MonoBehaviour:
   test: 0
   _inventorySlots: 3
   _throwCooldown: 2
-  _throwForce: 10
-  _throwDistance: 10
+  _throwForce: 13
+  _throwDistance: 6
   _moveSpeed: 5
   _turnSpeed: 1500
   _camAngleSkew: 45
