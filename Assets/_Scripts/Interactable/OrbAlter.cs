@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
+//TODO: Refactor to "Sender" class
 public class OrbAlter : Interactable {
     [SerializeField] private Transform displayPoint;
     [SerializeField] private MeshRenderer pillar;
-    [SerializeField] private List<Togglable> togglables;
+    [SerializeField] private List<Togglable> togglables;    //The theory is that a list of togglables will be taken in that activate when an orb of a certain color interacts
     private GameObject activeDisplayOrb;
     
+    //Uhhh yea this is pretty hardcoded for demo sake lmaoo
     public override void InteractAction(OrbThrownData data ) {
         base.InteractAction(data);
         if (activeDisplayOrb != null) {
