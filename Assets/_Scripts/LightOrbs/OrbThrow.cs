@@ -14,6 +14,8 @@ public class OrbThrow : MonoBehaviour {
     [SerializeField] private float _throwTime;
     [SerializeField] private float _collectRadius;
     [SerializeField] private AnimationCurve _speedCurve;
+    //Added for identification of orbs
+    [SerializeField] private OrbThrownData.OrbColor color;
     private float _animStartTime = 0f;
 
     // apparently this is like 2 times faster bc transform is an extern
@@ -93,11 +95,24 @@ public class OrbThrow : MonoBehaviour {
 
         // probably send out an event for animation?
         _thrown = false;
+        if (!coll.GetComponent<Player>()) SpawnFX(transform.position);
 
         Interactable interactable = coll.GetComponent<Interactable>();
 
         if (interactable != null) {
-            interactable.InteractAction(new OrbThrownData(this.gameObject, _throwDirection));
+            interactable.InteractAction(new OrbThrownData(this.gameObject, _throwDirection, color));
         }
     }
+    
+    //TODO: DELETE, TEMP FOR VISUALS
+    #region Temp
+
+    [SerializeField] private GameObject orbFX;
+
+    private void SpawnFX(Vector3 pos) {
+        GameObject fx = Instantiate(orbFX, pos, Quaternion.identity);
+        Destroy(fx, 2f);
+    }
+
+    #endregion Temp
 }
