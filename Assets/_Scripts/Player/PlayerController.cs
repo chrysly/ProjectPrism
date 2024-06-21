@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _canThrow = true;
 
-    private PlayerActionMap _playerActionMap;
+    //private PlayerActionMap _playerActionMap;
     private Vector3 _moveVector;
 
     /// <summary>
@@ -22,13 +22,13 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private Transform _t;
 
-    void Awake() {
+    void Start() {
         _t = this.transform;
         _controller = GetComponent<CharacterController>();
+
         // get player inputs
-        _playerActionMap = new PlayerActionMap();
-        _playerActionMap.Player.Enable();
-        _playerActionMap.Player.Throw.performed += PlayerThrow;
+        GameManager.Instance.EnterPlayerControls();
+        GameManager.Instance.PlayerActionMap.Player.Throw.performed += PlayerThrow;
     }
 
     void FixedUpdate() {
@@ -46,13 +46,13 @@ public class PlayerController : MonoBehaviour
             var relative = (_t.position + skewedInput) - _t.position; // angle between where we're moving
             var rot = Quaternion.LookRotation(relative, Vector3.up);    // axis which we rotate around
 
-            _t.rotation = Quaternion.RotateTowards(_t.rotation, rot, _player.TurnSpeed * Time.deltaTime);  // if want lerp
-            //transform.rotation = rot;
+            //_t.rotation = Quaternion.RotateTowards(_t.rotation, rot, _player.TurnSpeed * Time.deltaTime);  // if want lerp
+            transform.rotation = rot;
         }
     }
 
     private void PlayerMove() {
-        Vector2 inputVector = _playerActionMap.Player.Movement.ReadValue<Vector2>();
+        Vector2 inputVector = GameManager.Instance.PlayerActionMap.Player.Movement.ReadValue<Vector2>();
         _moveVector = new Vector3(inputVector.x, 0, inputVector.y);
 
         _controller.Move(_t.forward * _moveVector.magnitude * Time.deltaTime * _player.MoveSpeed);
