@@ -1179,6 +1179,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 2176594896594068038, guid: 87b9f9506bca45b4f852576c611c93c0,
+        type: 3}
+      propertyPath: m_Name
+      value: Container
+      objectReference: {fileID: 0}
+    - target: {fileID: 2261462089317804704, guid: 87b9f9506bca45b4f852576c611c93c0,
+        type: 3}
+      propertyPath: _npcData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d757610086e872438372a11ece3b81f,
+        type: 2}
     - target: {fileID: 3394646661038290331, guid: 87b9f9506bca45b4f852576c611c93c0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1228,6 +1239,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6555838531553336473, guid: 87b9f9506bca45b4f852576c611c93c0,
+        type: 3}
+      propertyPath: m_Name
+      value: ImageHolder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -15,3 +15,5 @@ MonoBehaviour:
   _npcName: TestNPC
   _imageSeq:
   - {fileID: 21300000, guid: 2edc647fbc8b61f41bf6818c261c0e28, type: 3}
+  - {fileID: 21300000, guid: b1c51133e33c2d24099b21e12f83ae24, type: 3}
+  - {fileID: 21300000, guid: df90e0c5960b05f4e9216dd278100bd5, type: 3}
