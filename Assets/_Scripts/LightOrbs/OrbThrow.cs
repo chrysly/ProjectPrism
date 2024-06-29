@@ -15,7 +15,7 @@ public class OrbThrow : MonoBehaviour {
     [SerializeField] private float _collectRadius;
     [SerializeField] private AnimationCurve _speedCurve;
     //Added for identification of orbs
-    [SerializeField] private OrbThrownData.OrbColor color;
+    [SerializeField] private OrbColor color;
     private float _animStartTime = 0f;
 
     // apparently this is like 2 times faster bc transform is an extern
