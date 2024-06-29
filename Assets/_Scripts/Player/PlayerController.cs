@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
 {
     private CharacterController _controller;
     [SerializeField] private Player _player;
-    [SerializeField] private Transform _throwPoint;
 
+    private OrbHandler _orbHandler;
     private bool _canThrow = true;
 
     //private PlayerActionMap _playerActionMap;
@@ -25,10 +25,11 @@ public class PlayerController : MonoBehaviour
     void Start() {
         _t = this.transform;
         _controller = GetComponent<CharacterController>();
+        _orbHandler = this.gameObject.GetComponent<OrbHandler>();
 
         // get player inputs
         GameManager.Instance.EnterPlayerControls();
-        GameManager.Instance.PlayerActionMap.Player.Throw.performed += PlayerThrow;
+        OrbHandler.OnThrow += PlayerThrow;
     }
 
     void FixedUpdate() {
@@ -58,15 +59,16 @@ public class PlayerController : MonoBehaviour
         _controller.Move(_t.forward * _moveVector.magnitude * Time.deltaTime * _player.MoveSpeed);
     }
     
-    private void PlayerThrow(InputAction.CallbackContext context) {
-        if (_canThrow && _player.HeldOrbCount() > 0) {
+    private void PlayerThrow(GameObject orb) {
+        if (_canThrow) {
             StartCoroutine(Throw());
 
-            _player.GetOrb().SetActive(true);
-            _player.GetOrb().GetComponent<OrbThrow>().ThrowOrb();
+            orb.SetActive(true);
+            orb.GetComponent<OrbThrow>().ThrowOrb();
 
+            //_player.OrbHandler.AddOrb
             // remove from curr orbs and add to thrown orbs list
-            _player.AddThrownOrb(_player.RemoveHeldOrb(_player.GetOrb()));
+            //_player.AddThrownOrb(_player.RemoveHeldOrb(_player.GetOrb()));
         }
     }
 
