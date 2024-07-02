@@ -22,6 +22,7 @@ public class Player : Actor
     private float _moveSpeed;
     private float _turnSpeed;
     private int _camAngleSkew;    // camera isometric skew in degrees
+    private float _gravityVal;
 
     public List<GameObject> startingOrbs; //test
 
@@ -37,6 +38,7 @@ public class Player : Actor
     public int CameraAngleSkew => _camAngleSkew;
     public Transform ThrowPoint => _throwPoint;
     public OrbHandler OrbHandler => _orbHandler;
+    public float GravityVal => _gravityVal;
     #endregion
 
     void Awake() {
@@ -55,41 +57,6 @@ public class Player : Actor
         _moveSpeed = _data.MoveSpeed;
         _turnSpeed = _data.TurnSpeed;
         _camAngleSkew = _data.CameraAngleSkew;
+        _gravityVal = _data.GravityVal;
     }
-
-    //protected void InitialSpawnOrbs() {
-    //    foreach (GameObject obj in startingOrbs) {
-    //        GameObject instantiatedChild = Instantiate(obj);
-    //        AddHeldOrb(instantiatedChild);
-    //        instantiatedChild.SetActive(false);
-    //    }
-    //}
-
-    //#region Custom List Functions
-    //public int HeldOrbCount() {
-    //    return heldOrbs.Count;
-    //}
-
-    //public GameObject GetOrb() {
-    //    return heldOrbs[0];
-    //}
-    
-    //public void AddHeldOrb(GameObject orb) {
-    //    heldOrbs.Add(orb);
-    //}
-
-    //public GameObject RemoveHeldOrb(GameObject orb) {
-    //    heldOrbs.Remove(orb);
-    //    return orb;
-    //}
-
-    //public void AddThrownOrb(GameObject orb) {
-    //    thrownOrbs.Add(orb);
-    //}
-
-    //public GameObject RemoveThrownOrb(GameObject orb) {
-    //    thrownOrbs.Remove(orb);
-    //    return orb;
-    //}
-    //#endregion
 }

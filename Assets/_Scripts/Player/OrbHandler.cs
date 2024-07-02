@@ -24,6 +24,7 @@ public class OrbHandler : MonoBehaviour
         _player = GetComponent<Player>();
         _heldOrbs = new GameObject[_player.InventorySlots];
         GameManager.Instance.PlayerActionMap.Player.Throw.performed += ThrowOrb;
+        GameManager.Instance.PlayerActionMap.Player.SwapOrbs.performed += SwapOrbs;
 
         // initialize spawn orbs
         foreach (GameObject obj in _player.startingOrbs) {
@@ -52,8 +53,9 @@ public class OrbHandler : MonoBehaviour
         return false;
     }
 
-    public bool RemoveOrb() {
+    public GameObject RemoveOrb() {
         if (_heldOrbsCount > 0) {
+            GameObject toReturn = _heldOrbs[0];
             _heldOrbs[0] = null;
             _heldOrbsCount--;
             for (int i = 0; i < _heldOrbsCount; i++) {
@@ -61,8 +63,26 @@ public class OrbHandler : MonoBehaviour
             }
             _heldOrbs[_heldOrbsCount] = null;
 
-            return true;
+            return toReturn;
         }
-        return false;
+        return null;
+    }
+
+    private void SwapOrbs(InputAction.CallbackContext context) {
+        if (_heldOrbsCount <= 1) { return; }    // not enough orbs to swap
+
+        if (context.ReadValue<float>() >= 0) {    // swap to the right
+            GameObject _removedOrb = RemoveOrb();
+            _heldOrbs[_heldOrbsCount] = _removedOrb;
+            _heldOrbsCount++;
+        } else {    // swap to the left
+            GameObject _removedOrb = RemoveOrb();       // jank method
+            _heldOrbs[_heldOrbsCount] = _removedOrb;
+            _heldOrbsCount++;
+
+            _removedOrb = RemoveOrb();
+            _heldOrbs[_heldOrbsCount] = _removedOrb;
+            _heldOrbsCount++;
+        }
     }
 }

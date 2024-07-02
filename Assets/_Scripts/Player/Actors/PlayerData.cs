@@ -16,6 +16,7 @@ public class PlayerData : ActorData
     [SerializeField] private float _moveSpeed = 5;
     [SerializeField] private float _turnSpeed = 1500;
     [SerializeField] private int _camAngleSkew = 45;    // camera isometric skew in degrees
+    [SerializeField] private float _gravityVal;
 
     // Accessors ---
     public int InventorySlots => _inventorySlots;
@@ -26,4 +27,5 @@ public class PlayerData : ActorData
     public float MoveSpeed => _moveSpeed;
     public float TurnSpeed => _turnSpeed;
     public int CameraAngleSkew => _camAngleSkew;
+    public float GravityVal => _gravityVal;
 }

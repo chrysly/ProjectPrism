@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     //private PlayerActionMap _playerActionMap;
     private Vector3 _moveVector;
+    private float verticalVelocity;
 
     /// <summary>
     /// Transform of this object
@@ -56,7 +57,13 @@ public class PlayerController : MonoBehaviour
         Vector2 inputVector = GameManager.Instance.PlayerActionMap.Player.Movement.ReadValue<Vector2>();
         _moveVector = new Vector3(inputVector.x, 0, inputVector.y);
 
-        _controller.Move(_t.forward * _moveVector.magnitude * Time.deltaTime * _player.MoveSpeed);
+        //if (!_controller.isGrounded) {
+        //    verticalVelocity -= _player.GravityVal * Time.deltaTime;
+        //    _moveVector.y = verticalVelocity;
+        //    _controller.Move(_t.up * _moveVector.magnitude * Time.deltaTime * _player.MoveSpeed);
+        //} else {
+            _controller.Move(_t.forward * _moveVector.magnitude * Time.deltaTime * _player.MoveSpeed);
+        //}
     }
     
     private void PlayerThrow(GameObject orb) {
@@ -65,10 +72,6 @@ public class PlayerController : MonoBehaviour
 
             orb.SetActive(true);
             orb.GetComponent<OrbThrow>().ThrowOrb();
-
-            //_player.OrbHandler.AddOrb
-            // remove from curr orbs and add to thrown orbs list
-            //_player.AddThrownOrb(_player.RemoveHeldOrb(_player.GetOrb()));
         }
     }
 

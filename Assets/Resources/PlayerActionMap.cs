@@ -44,6 +44,15 @@ public partial class @PlayerActionMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwapOrbs"",
+                    ""type"": ""Button"",
+                    ""id"": ""33f432a9-a170-4550-9df6-895dbb367a93"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,39 @@ public partial class @PlayerActionMap: IInputActionCollection2, IDisposable
                     ""action"": ""Throw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""8902b286-a6f9-4ec9-8c1e-e9a62374c62e"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwapOrbs"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""d4d0c77a-6158-440b-a583-80faad3a460f"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwapOrbs"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""53ad4373-5c5e-41eb-a415-4fbfefe07524"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwapOrbs"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -150,6 +192,7 @@ public partial class @PlayerActionMap: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
+        m_Player_SwapOrbs = m_Player.FindAction("SwapOrbs", throwIfNotFound: true);
         // UIControl
         m_UIControl = asset.FindActionMap("UIControl", throwIfNotFound: true);
         m_UIControl_Continue = m_UIControl.FindAction("Continue", throwIfNotFound: true);
@@ -216,12 +259,14 @@ public partial class @PlayerActionMap: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Throw;
+    private readonly InputAction m_Player_SwapOrbs;
     public struct PlayerActions
     {
         private @PlayerActionMap m_Wrapper;
         public PlayerActions(@PlayerActionMap wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
+        public InputAction @SwapOrbs => m_Wrapper.m_Player_SwapOrbs;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -237,6 +282,9 @@ public partial class @PlayerActionMap: IInputActionCollection2, IDisposable
             @Throw.started += instance.OnThrow;
             @Throw.performed += instance.OnThrow;
             @Throw.canceled += instance.OnThrow;
+            @SwapOrbs.started += instance.OnSwapOrbs;
+            @SwapOrbs.performed += instance.OnSwapOrbs;
+            @SwapOrbs.canceled += instance.OnSwapOrbs;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -247,6 +295,9 @@ public partial class @PlayerActionMap: IInputActionCollection2, IDisposable
             @Throw.started -= instance.OnThrow;
             @Throw.performed -= instance.OnThrow;
             @Throw.canceled -= instance.OnThrow;
+            @SwapOrbs.started -= instance.OnSwapOrbs;
+            @SwapOrbs.performed -= instance.OnSwapOrbs;
+            @SwapOrbs.canceled -= instance.OnSwapOrbs;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -314,6 +365,7 @@ public partial class @PlayerActionMap: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
+        void OnSwapOrbs(InputAction.CallbackContext context);
     }
     public interface IUIControlActions
     {
