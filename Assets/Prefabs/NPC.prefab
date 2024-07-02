@@ -129,7 +129,7 @@ MonoBehaviour:
   _canHoldOrb: 0
   _maxHeldOrbs: 0
   _ImageHolder: {fileID: 394455052548143261}
-  _data: {fileID: 11400000, guid: 5d757610086e872438372a11ece3b81f, type: 2}
+  _npcData: {fileID: 11400000, guid: 5d757610086e872438372a11ece3b81f, type: 2}
 --- !u!136 &769765197113226156
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 618928380502487676}
   - component: {fileID: 991475487388911263}
   m_Layer: 0
-  m_Name: ImageHolder
+  m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 394455052548143261}
   - component: {fileID: 5982914081027606901}
   m_Layer: 0
-  m_Name: Image
+  m_Name: ImageHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
