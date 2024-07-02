@@ -15,7 +15,7 @@ public class OrbThrow : MonoBehaviour {
     [SerializeField] private float _collectRadius;
     [SerializeField] private AnimationCurve _speedCurve;
     //Added for identification of orbs
-    [SerializeField] private OrbThrownData.OrbColor color;
+    [SerializeField] private OrbColor color;
     private float _animStartTime = 0f;
 
     // apparently this is like 2 times faster bc transform is an extern
@@ -36,7 +36,7 @@ public class OrbThrow : MonoBehaviour {
     public void OrbOn() {
         this.gameObject.SetActive(true);    // does this work???
     }
-    
+
     // want to refactor how vars are taken from player SO and used here as variables
     #region Throwing Orbs
     private void MoveOrb() {
@@ -51,13 +51,15 @@ public class OrbThrow : MonoBehaviour {
         // once it gets close to the player deactivate orb
         if (!_thrown && Vector3.Distance(_throwPoint.position, _t.position) < _collectRadius) {
             _animStartTime = 0;
-            _player.AddHeldOrb(_player.RemoveThrownOrb(this.gameObject));
-            OrbOff();
+
+            _player.OrbHandler.AddOrb(this.gameObject);
+
+            //_player.AddHeldOrb(_player.RemoveThrownOrb(this.gameObject));
+            //OrbOff();
         }
     }
 
     public void ThrowOrb() {
-
         // well shit i have to initialize this again bc i deactivate the object --> looking for solutions....
         _sender = GameObject.FindGameObjectWithTag("Player");
         _player = _sender.GetComponent<Player>();
@@ -65,11 +67,9 @@ public class OrbThrow : MonoBehaviour {
         _throwPoint = _player.ThrowPoint;
         // ---
 
-        this.transform.position = _throwPoint.position;
+        _t.position = _throwPoint.position;
         _throwDirection = new Vector3(_throwPoint.position.x, _throwPoint.position.y, _throwPoint.position.z) + _throwPoint.forward * _player.ThrowDistance;
         StartCoroutine(Thrown());
-
-        Debug.Log("Throw direction: " + _throwDirection);
     }
 
     IEnumerator Thrown() {
