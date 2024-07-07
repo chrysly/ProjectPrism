@@ -34,6 +34,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate() {
+        //PlayerMove();
+        //PlayerLook();
+    }
+
+    void Update() {
+        PlayerGravity();
         PlayerMove();
         PlayerLook();
     }
@@ -57,13 +63,19 @@ public class PlayerController : MonoBehaviour
         Vector2 inputVector = GameManager.Instance.PlayerActionMap.Player.Movement.ReadValue<Vector2>();
         _moveVector = new Vector3(inputVector.x, 0, inputVector.y);
 
-        //if (!_controller.isGrounded) {
-        //    verticalVelocity -= _player.GravityVal * Time.deltaTime;
-        //    _moveVector.y = verticalVelocity;
-        //    _controller.Move(_t.up * _moveVector.magnitude * Time.deltaTime * _player.MoveSpeed);
-        //} else {
-            _controller.Move(_t.forward * _moveVector.magnitude * Time.deltaTime * _player.MoveSpeed);
-        //}
+        _controller.Move(_t.forward * _moveVector.magnitude * Time.deltaTime * _player.MoveSpeed);
+    }
+
+    private void PlayerGravity() {
+        //_controller.Move(new Vector3(0, -1f, 0));
+        // gravity
+        if (_controller.isGrounded) {
+            verticalVelocity = -1f;
+        } else {
+            verticalVelocity -= _player.GravityVal * Time.deltaTime;
+        }
+        Vector3 gravVector = new Vector3(0, verticalVelocity, 0);
+        _controller.Move(gravVector * Time.deltaTime);
     }
     
     private void PlayerThrow(GameObject orb) {
