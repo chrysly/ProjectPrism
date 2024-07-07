@@ -11,19 +11,20 @@ public class Player : Actor
     [SerializeField] private PlayerData _data;
     public PlayerData Data => Data;
 
+    [Header("Movement Variables")]
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _turnSpeed;
+    [SerializeField] private int _camAngleSkew;    // camera isometric skew in degrees
+    [SerializeField] private float _gravityVal;
+
     [Header("Throw Variables")]
-    private int _inventorySlots;
-    private float _throwCooldown;
-    private float _throwForce;
-    private float _throwDistance;
+    [SerializeField] private int _inventorySlots;
+    [SerializeField] private float _throwCooldown;
+    [SerializeField] private float _throwForce;
+    [SerializeField] private float _throwDistance;
     [SerializeField] private Transform _throwPoint;
 
-    [Header("Movement Variables")]
-    private float _moveSpeed;
-    private float _turnSpeed;
-    private int _camAngleSkew;    // camera isometric skew in degrees
-    private float _gravityVal;
-
+    [Header("Other")]
     public List<GameObject> startingOrbs; //test
 
     private OrbHandler _orbHandler;
