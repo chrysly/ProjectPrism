@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum OrbColor {
-    Red,
-    Green,
-    Blue
+public enum EColor {
+    Red, Green, Blue,
+    Yellow, Magenta, Cyan,
+    White, Black
 }
 
 /// <summary>
@@ -15,16 +15,16 @@ public class OrbThrownData
     {
     private GameObject _orbObject;
     private Vector3 _pushDirection;
-    private OrbColor _color;
+    private EColor _color;
 
     public GameObject OrbObject => _orbObject;
     public Vector3 PushDirection => _pushDirection;
     
     //Added for color identification for togglables
-    public OrbColor Color => _color;
+    public EColor Color => _color;
 
     // constructor
-    public OrbThrownData(GameObject otb, Vector3 dir, OrbColor color) {
+    public OrbThrownData(GameObject otb, Vector3 dir, EColor color) {
         _orbObject = otb;
         _pushDirection = dir;
         _color = color;

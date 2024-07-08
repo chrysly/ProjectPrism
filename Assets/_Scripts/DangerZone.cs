@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Zone that kills player if they are not a certain color
@@ -9,9 +10,9 @@ using UnityEditor;
 public class DangerZone : MonoBehaviour {
 
     public MeshRenderer Renderer;
-    [SerializeField] private OrbColor orbColor;
-    public OrbColor OrbColor {
-        get => orbColor;
+    [FormerlySerializedAs("orbColor")] [SerializeField] private EColor eColor;
+    public EColor EColor {
+        get => eColor;
         set => SetOrbColor(value);
     }
 
@@ -20,15 +21,15 @@ public class DangerZone : MonoBehaviour {
     }
 
     #if UNITY_EDITOR
-    public void SetOrbColor(OrbColor color) {
+    public void SetOrbColor(EColor color) {
         // Update object here;
-        orbColor = color;
+        eColor = color;
         MaterialPropertyBlock mpb = new();
         Renderer.GetPropertyBlock(mpb);
         Vector4 mColor = color switch {
-            OrbColor.Red => new Vector4(1, 0, 0, 0.35f),
-            OrbColor.Green => new Vector4(0, 1, 0, 0.35f),
-            OrbColor.Blue => new Vector4(0, 0, 1, 0.35f),
+            EColor.Red => new Vector4(1, 0, 0, 0.35f),
+            EColor.Green => new Vector4(0, 1, 0, 0.35f),
+            EColor.Blue => new Vector4(0, 0, 1, 0.35f),
             _ => Vector4.one,
         };
         mpb.SetColor("_Color", mColor);
@@ -54,8 +55,8 @@ public class DangerZoneEditor : Editor {
             dz.Renderer = EditorGUILayout.ObjectField("Mesh Renderer", dz.Renderer, 
                                           typeof(MeshRenderer), true) as MeshRenderer;
             GUI.enabled = dz.Renderer != null;
-            OrbColor color = (OrbColor) EditorGUILayout.EnumPopup("Orb Color", dz.OrbColor);
-            if (dz.OrbColor != color) dz.OrbColor = color;
+            EColor color = (EColor) EditorGUILayout.EnumPopup("Orb Color", dz.EColor);
+            if (dz.EColor != color) dz.EColor = color;
             GUI.enabled = true;
             if (changeScope.changed) EditorUtility.SetDirty(target);
         }

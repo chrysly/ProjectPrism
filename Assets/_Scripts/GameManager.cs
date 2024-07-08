@@ -32,4 +32,8 @@ public class GameManager : MonoBehaviour
         _playerActionMap.UIControl.Enable();
         _playerActionMap.Player.Disable();
     }
+
+    public void ExitPlayerControls() {
+        _playerActionMap.Player.Disable();
+    }
 }
