@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2464574271728498620}
+  - component: {fileID: 1560616606872424622}
   - component: {fileID: 7657763316295368380}
   - component: {fileID: 8493570433643850782}
   - component: {fileID: 2476339535433769764}
-  - component: {fileID: 1560616606872424622}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -36,6 +36,19 @@ Transform:
   - {fileID: 341145870270028009}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1560616606872424622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2482604075890481654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9895822e729251148952605a647dcb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heldOrbs: []
 --- !u!114 &7657763316295368380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,6 +62,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 26def636cb5687f4f99b0148f4539234, type: 2}
+  _moveSpeed: 0
+  _turnSpeed: 0
+  _camAngleSkew: 0
+  _gravityVal: 0
+  _inventorySlots: 0
+  _throwCooldown: 0
+  _throwForce: 0
+  _throwDistance: 0
   _throwPoint: {fileID: 5553248835526558919}
   startingOrbs:
   - {fileID: 4309414488823528469, guid: ab6a19fb12f7d6d468ad026b5e949395, type: 3}
@@ -93,19 +114,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1560616606872424622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2482604075890481654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9895822e729251148952605a647dcb3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _heldOrbs: []
 --- !u!1 &4784449549413754599
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +125,6 @@ GameObject:
   - component: {fileID: 4974210906386674734}
   - component: {fileID: 7870192549018319794}
   - component: {fileID: 2614196966288233128}
-  - component: {fileID: 7296142276645280143}
   m_Layer: 0
   m_Name: Capsle
   m_TagString: Untagged
@@ -190,29 +197,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7296142276645280143
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4784449549413754599}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6393306810909405067
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +239,6 @@ GameObject:
   - component: {fileID: 6103499038086770097}
   - component: {fileID: 2305673864584311063}
   - component: {fileID: 4137621568010751581}
-  - component: {fileID: 354784171186196561}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -328,27 +311,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &354784171186196561
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7605537636438672740}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7877990377318487530
 GameObject:
   m_ObjectHideFlags: 0

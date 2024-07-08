@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
     // rotates the player within isometric
     private void PlayerLook() {
+        
+
         if (_moveVector != Vector3.zero) {
             //fixes isometric jank
             var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, _player.CameraAngleSkew, 0));
@@ -54,8 +56,8 @@ public class PlayerController : MonoBehaviour
             var relative = (_t.position + skewedInput) - _t.position; // angle between where we're moving
             var rot = Quaternion.LookRotation(relative, Vector3.up);    // axis which we rotate around
 
-            //_t.rotation = Quaternion.RotateTowards(_t.rotation, rot, _player.TurnSpeed * Time.deltaTime);  // if want lerp
-            transform.rotation = rot;
+            _t.rotation = Quaternion.RotateTowards(_t.rotation, rot, _player.TurnSpeed * Time.deltaTime);  // if want lerp
+            //transform.rotation = rot;
         }
     }
 

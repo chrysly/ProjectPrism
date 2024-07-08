@@ -19,6 +19,6 @@ MonoBehaviour:
   _throwForce: 13
   _throwDistance: 6
   _moveSpeed: 5
-  _turnSpeed: 1500
+  _turnSpeed: 1000
   _camAngleSkew: 45
   _gravityVal: 1.5
