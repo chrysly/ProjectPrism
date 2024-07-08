@@ -17,6 +17,12 @@ public class OrbHandler : MonoBehaviour
     public delegate void Throw(GameObject orb);
     public static event Throw OnThrow;
 
+    /// <summary>
+    /// Publishes on any orb operation. Intended for an inventory check for player color swapping.
+    /// </summary>
+    public delegate void InventoryOperation(OrbThrow[] orbs);
+    public event InventoryOperation OnInventoryOperation;
+
     private Player _player;
 
     // initialize the inventory
@@ -29,7 +35,7 @@ public class OrbHandler : MonoBehaviour
         // initialize spawn orbs
         foreach (GameObject obj in _player.startingOrbs) {
             GameObject instantiatedChild = Instantiate(obj);
-            AddOrb(instantiatedChild);
+            AddOrb(instantiatedChild, true);
         }
     }
 
@@ -43,17 +49,18 @@ public class OrbHandler : MonoBehaviour
         }
     }
 
-    public bool AddOrb(GameObject orb) {
+    public bool AddOrb(GameObject orb, bool setup = false) {
         if (_heldOrbsCount < _heldOrbs.Length) {
             orb.SetActive(false);
             _heldOrbs[_heldOrbsCount] = orb;
             _heldOrbsCount++;
+            if (!setup) OnInventoryOperation?.Invoke(ObjectToOrbArray());
             return true;
         }
         return false;
     }
 
-    public GameObject RemoveOrb() {
+    public GameObject RemoveOrb(bool setup = false) {
         if (_heldOrbsCount > 0) {
             GameObject toReturn = _heldOrbs[0];
             _heldOrbs[0] = null;
@@ -62,7 +69,8 @@ public class OrbHandler : MonoBehaviour
                 _heldOrbs[i] = _heldOrbs[i + 1];
             }
             _heldOrbs[_heldOrbsCount] = null;
-
+            if (!setup) OnInventoryOperation?.Invoke(ObjectToOrbArray());
+            
             return toReturn;
         }
         return null;
@@ -84,5 +92,19 @@ public class OrbHandler : MonoBehaviour
             _heldOrbs[_heldOrbsCount] = _removedOrb;
             _heldOrbsCount++;
         }
+    }
+
+    
+    /// <summary>
+    /// Conversion method for retrieving color data from orb
+    /// </summary>
+    /// <returns>A list of held orbs</returns>
+    private OrbThrow[] ObjectToOrbArray() {
+        OrbThrow[] orbs = new OrbThrow[_heldOrbs.Length];
+        for (int i = 0; i < _player.InventorySlots; i++) {
+            if (_heldOrbs[i] != null) orbs[i] = _heldOrbs[i].GetComponentInChildren<OrbThrow>();
+        }
+
+        return orbs;
     }
 }
