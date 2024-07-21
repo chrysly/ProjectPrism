@@ -29,17 +29,17 @@ public abstract class Interactable : MonoBehaviour
     }
 
     protected void HoldOrb() {
-        if (_canHoldOrb) {
-            if (_currentHeldOrbs.Count < _maxHeldOrbs) {
-                _currentHeldOrbs.Add(_hitData.OrbObject);
-                _hitData.OrbObject.GetComponent<OrbThrow>().OrbOff();
-            } else {
-                // swap orbs
-                _currentHeldOrbs[0].GetComponent<OrbThrow>().OrbOn();
-                _currentHeldOrbs.Remove(_currentHeldOrbs[0]);
-                _currentHeldOrbs.Add(_hitData.OrbObject);
-                _hitData.OrbObject.GetComponent<OrbThrow>().OrbOff();
-            }
+        if (!_canHoldOrb) { return; }
+
+        if (_currentHeldOrbs.Count < _maxHeldOrbs) {
+            _currentHeldOrbs.Add(_hitData.OrbObject);
+            _hitData.OrbObject.GetComponent<OrbThrow>().OrbOff();
+        } else {
+            // swap orbs
+            _currentHeldOrbs[0].GetComponent<OrbThrow>().OrbOn();
+            _currentHeldOrbs.Remove(_currentHeldOrbs[0]);
+            _currentHeldOrbs.Add(_hitData.OrbObject);
+            _hitData.OrbObject.GetComponent<OrbThrow>().OrbOff();
         }
     }
 }

@@ -21,3 +21,4 @@ MonoBehaviour:
   _moveSpeed: 5
   _turnSpeed: 1500
   _camAngleSkew: 45
+  _gravityVal: 1.5
