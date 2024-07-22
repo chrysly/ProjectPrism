@@ -4,7 +4,7 @@ using UnityEngine;
 
 //TODO: Refactor to "Receiver" class
 public class Togglable : MonoBehaviour {
-    [SerializeField] protected OrbColor colorMatch;
+    [SerializeField] protected EColor colorMatch;
 
     //Other scripts must call this method to check if the correct color is triggered
     public virtual void Toggle(OrbThrownData data) {

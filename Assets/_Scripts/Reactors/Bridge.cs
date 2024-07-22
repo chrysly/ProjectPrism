@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class Bridge : Togglable {
     private MeshRenderer _renderer;
+    private BoxCollider _collider;
 
     private void Awake() {
         _renderer = GetComponent<MeshRenderer>();
+        _collider = GetComponentInChildren<BoxCollider>();
     }
 
     protected override void Enable(OrbThrownData data) {
@@ -18,6 +20,7 @@ public class Bridge : Togglable {
         material.DOFloat(1.25f, "_Cutoff", 3f);
         Material[] materials = { material };
         _renderer.materials = materials;
+        _collider.enabled = true;   //TODO: refactor to dynamic collider toggle, should move with the shader
     }
 
     protected override void Disable(OrbThrownData data) {
@@ -26,5 +29,6 @@ public class Bridge : Togglable {
         material.DOFloat(0f, "_Cutoff", 1.5f);
         Material[] materials = { material };
         _renderer.materials = materials;
+        _collider.enabled = false;
     }
 }
