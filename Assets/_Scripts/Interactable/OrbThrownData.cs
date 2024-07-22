@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EColor {
-    Red, Green, Blue,
-    Yellow, Magenta, Cyan,
-    White, Black
+public enum EColor : uint {
+    Black = 0,      /// 0 0 0
+    Blue = 1,       /// 0 0 1
+    Green = 2,      /// 0 1 0
+    Cyan = 3,       /// 0 1 1
+    Red = 4,        /// 1 0 0
+    Magenta = 5,    /// 1 0 1
+    Yellow = 6,     /// 1 1 0
+    White = 7,      /// 1 1 1
 }
 
 /// <summary>
