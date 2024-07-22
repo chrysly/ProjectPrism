@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7657763316295368380}
   - component: {fileID: 8493570433643850782}
   - component: {fileID: 2476339535433769764}
+  - component: {fileID: 1560616606872424622}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -49,8 +50,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 26def636cb5687f4f99b0148f4539234, type: 2}
   _throwPoint: {fileID: 5553248835526558919}
-  heldOrbs: []
-  thrownOrbs: []
   startingOrbs:
   - {fileID: 4309414488823528469, guid: ab6a19fb12f7d6d468ad026b5e949395, type: 3}
   - {fileID: 4309414488823528469, guid: 216ed2801601ee54086bd2c0e998de42, type: 3}
@@ -68,7 +67,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 7657763316295368380}
-  _throwPoint: {fileID: 5553248835526558919}
 --- !u!143 &2476339535433769764
 CharacterController:
   m_ObjectHideFlags: 0
@@ -95,6 +93,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1560616606872424622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2482604075890481654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9895822e729251148952605a647dcb3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heldOrbs: []
 --- !u!1 &4784449549413754599
 GameObject:
   m_ObjectHideFlags: 0
