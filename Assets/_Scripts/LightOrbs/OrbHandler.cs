@@ -11,6 +11,9 @@ public class OrbHandler : MonoBehaviour
     #region Events
     public delegate void OrbsSwapped(List<EColor> colors);
     public static event OrbsSwapped OnOrbsSwapped;
+
+    public delegate void OrbThrown(List<EColor> color);
+    public static event OrbThrown OnOrbThrown;
     #endregion
 
     [SerializeField] private GameObject[] _heldOrbs;
@@ -48,6 +51,13 @@ public class OrbHandler : MonoBehaviour
     /// Throw the first orb in the inventory slot
     /// </summary>
     private void ThrowOrb(InputAction.CallbackContext context) {
+        // set up the event data to send
+        List <EColor> cls = new List <EColor>();
+        foreach (GameObject orb in _heldOrbs) {
+            if (orb != null) { cls.Add(orb.GetComponent<OrbThrow>().Color); }
+        }
+        OnOrbThrown(cls);
+
         if (_heldOrbsCount > 0) {
             OnThrow(_heldOrbs[0]);
             RemoveOrb();
