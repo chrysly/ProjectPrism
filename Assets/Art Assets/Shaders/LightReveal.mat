@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2070412626974200880
+--- !u!114 &-133351110511538330
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bridge
-  m_Shader: {fileID: -6465566751694194690, guid: 033370f4e619a4d4581ff836afa6fc16,
+  m_Name: LightReveal
+  m_Shader: {fileID: -6465566751694194690, guid: e6ced4fec190d2449a65021fc6ef0a23,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -51,12 +51,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Cutoff: 0.7
-    - _Edge_Width: 0.08
-    - _Noise_Scale: 29.6
-    - _Noise_Strength: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 2.943396, g: 0.48316106, b: 0.48316106, a: 0}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
