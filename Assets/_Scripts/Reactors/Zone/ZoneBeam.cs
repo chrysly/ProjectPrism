@@ -44,7 +44,7 @@ public class ZoneBeam : MonoBehaviour {
         Mesh plane = _zone.GetComponentInChildren<MeshFilter>().sharedMesh;
         Gizmos.color = Color.red;
         Gizmos.DrawCube(plane.vertices[2] + _zone.transform.position, Vector3.one);
-        Gizmos.DrawCube(_mesh.vertices[] + transform.position, Vector3.one);
+        Gizmos.DrawCube(_mesh.vertices[2] + transform.position, Vector3.one);
     }
 
     private Vector3[] GenerateVertices() {
