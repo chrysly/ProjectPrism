@@ -1627,6 +1627,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 34002789301577097, guid: e3c773084cedd9445833a65efc1ac700,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1829520214897310154, guid: e3c773084cedd9445833a65efc1ac700,
         type: 3}
       propertyPath: _bigDaddyCanvas

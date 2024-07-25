@@ -8,7 +8,7 @@ using UnityEngine;
 public class Player : Actor
 {
     #region
-    public delegate void PlayerSpawn(EColor color);
+    public delegate void PlayerSpawn(List<EColor> color);
     public static event PlayerSpawn OnSpawn;
     #endregion
 
@@ -71,6 +71,10 @@ public class Player : Actor
     /// When the player spawns in (start and for respawn)
     /// </summary>
     protected void SpawnPlayer() {
-        OnSpawn(startingOrbs[0].GetComponent<OrbThrow>().Color);
+        List<EColor> colors = new List<EColor>();
+        for (int i = 0; i < startingOrbs.Count; i++) {
+            colors.Add(startingOrbs[i].GetComponent<OrbThrow>().Color);
+        }
+        OnSpawn(colors);
     }
 }

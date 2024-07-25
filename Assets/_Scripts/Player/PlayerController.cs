@@ -46,8 +46,6 @@ public class PlayerController : MonoBehaviour
 
     // rotates the player within isometric
     private void PlayerLook() {
-        
-
         if (_moveVector != Vector3.zero) {
             //fixes isometric jank
             var matrix = Matrix4x4.Rotate(Quaternion.Euler(0, _player.CameraAngleSkew, 0));
