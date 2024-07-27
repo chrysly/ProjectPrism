@@ -14,8 +14,9 @@ public class PlayerData : ActorData
 
     [Header("Movement Variables")]
     [SerializeField] private float _moveSpeed = 5;
-    [SerializeField] private float _turnSpeed = 1500;
-    [SerializeField] private int _camAngleSkew = 45;    // camera isometric skew in degrees
+    [SerializeField] private float _turnSpeed = 20f;
+    [SerializeField] private float _linearDrag = 20f;
+    [SerializeField] private float _moveAccel = 0.2f;
     [SerializeField] private float _gravityVal;
 
     // Accessors ---
@@ -26,6 +27,7 @@ public class PlayerData : ActorData
 
     public float MoveSpeed => _moveSpeed;
     public float TurnSpeed => _turnSpeed;
-    public int CameraAngleSkew => _camAngleSkew;
+    public float MoveAccel => _moveAccel;
+    public float LinearDrag => _linearDrag;
     public float GravityVal => _gravityVal;
 }
