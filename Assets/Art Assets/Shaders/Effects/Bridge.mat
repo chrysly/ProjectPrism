@@ -51,10 +51,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Cutoff: 0
-    - _Edge_Width: 0.4
-    - _Noise_Scale: 21.4
-    - _Noise_Strength: 1
+    - _Cutoff: 0.7
+    - _Edge_Width: 0.08
+    - _Noise_Scale: 29.6
+    - _Noise_Strength: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
