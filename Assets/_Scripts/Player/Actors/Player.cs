@@ -7,6 +7,11 @@ using UnityEngine;
 /// </summary>
 public class Player : Actor
 {
+    #region
+    public delegate void PlayerSpawn(List<EColor> color);
+    public static event PlayerSpawn OnSpawn;
+    #endregion
+
     #region Data Attributes
     [SerializeField] private PlayerData _data;
     public PlayerData Data => Data;
@@ -48,6 +53,7 @@ public class Player : Actor
 
     void Start() {
         _orbHandler = this.gameObject.GetComponent<OrbHandler>();
+        SpawnPlayer();
     }
 
     protected void InitializeAttributes() {
@@ -60,5 +66,16 @@ public class Player : Actor
         _moveAccel = _data.MoveAccel;
         _linearDrag = _data.LinearDrag;
         _gravityVal = _data.GravityVal;
+    }
+
+    /// <summary>
+    /// When the player spawns in (start and for respawn)
+    /// </summary>
+    protected void SpawnPlayer() {
+        List<EColor> colors = new List<EColor>();
+        for (int i = 0; i < startingOrbs.Count; i++) {
+            colors.Add(startingOrbs[i].GetComponent<OrbThrow>().Color);
+        }
+        OnSpawn(colors);
     }
 }

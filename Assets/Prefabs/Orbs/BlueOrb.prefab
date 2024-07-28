@@ -75,7 +75,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  color: 2
+  _color: 1
   orbFX: {fileID: 7665432905935572637}
 --- !u!135 &-6169201003052090384
 SphereCollider:
