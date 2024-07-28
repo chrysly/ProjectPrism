@@ -21,6 +21,8 @@ public class OrbUIAnim : MonoBehaviour
 
     private Image MainHolder => _bckgImgs[0];
 
+    private int _numOrbs = 0;
+
     void Start() {
         //OrbHandler.OnOrbsSwapped += StartAnim;
         OrbHandler.OnOrbThrown += OnOrbThrown;
@@ -30,7 +32,8 @@ public class OrbUIAnim : MonoBehaviour
     /// <summary>
     /// When the player spawns in play this
     /// </summary>
-    private void OnSpawn(List<EColor> c) {
+    private void OnSpawn(List<EColor> cls) {
+        SetNumOrbs(cls.Count);
         _mainCanvas.alpha = 0f;
         _sideBitches.alpha = 0f;
         _mainCanvas.DOFade(1, _fadeTime);
@@ -39,7 +42,7 @@ public class OrbUIAnim : MonoBehaviour
         for (int i = 0; i < _orbImgs.Length; ++i) {
             UIOrb obj = new UIOrb(_orbImgs[i], _bckgImgs[i].transform);
             _orbs.Add(obj);
-            obj.SetOrbColor(c[i]);
+            obj.SetOrbColor(cls[i]);
             obj.FadeOrb(1, _fadeTime);
         }
 
@@ -49,20 +52,25 @@ public class OrbUIAnim : MonoBehaviour
     // jank bc dreamhack kms
     private IEnumerator SpawnWait() {
         yield return new WaitForSeconds(0.4f);
-        FadeBackgroundOrbs(0);
+        FadeBackgroundOrbs(0, _numOrbs);
+    }
+
+    private void SetNumOrbs(int num) {
+        _numOrbs = num;
     }
 
     private void OnOrbThrown(List<EColor> cls) {
+        
         _orbs[0].SpecialFade(0, 1f);
 
-       FadeBackgroundOrbs(1);
+       FadeBackgroundOrbs(1, _numOrbs);
 
        RotateOrbImages();
     }
 
     // Utility methods ---
 
-    private void FadeBackgroundOrbs(int alpha) {
+    private void FadeBackgroundOrbs(int alpha, int numOrbs) {
         if (alpha > 0) {
             for (int i = 1; i < _orbs.Count; ++i) {
                 _orbs[i].FadeOrb(1, _fadeTime);
@@ -117,6 +125,6 @@ public class OrbUIAnim : MonoBehaviour
 
 
         yield return new WaitForSeconds(0.1f);
-        FadeBackgroundOrbs(0);
+        FadeBackgroundOrbs(0, _numOrbs);
     }
 }
