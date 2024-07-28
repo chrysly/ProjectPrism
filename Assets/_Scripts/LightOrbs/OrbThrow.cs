@@ -25,8 +25,10 @@ public class OrbThrow : MonoBehaviour {
     private Transform _t;
     private Transform _throwPoint;
 
+    private bool interrupt;
+
     void FixedUpdate() {
-        MoveOrb();
+        if (!interrupt) MoveOrb();
     }
 
     public void OrbOff() {
@@ -97,10 +99,27 @@ public class OrbThrow : MonoBehaviour {
         _thrown = false;
         if (!coll.GetComponent<Player>()) SpawnFX(transform.position);
 
+        /// NPC ABSORB PLACEHOLDER. REMOVE AFTER DREAMHACK!
+        if (coll.GetComponent<NPC>()) {
+            StartCoroutine(NPCAbsorb(coll.transform));
+            interrupt = true;
+        }
+
         Interactable interactable = coll.GetComponent<Interactable>();
 
         if (interactable != null) {
             interactable.InteractAction(new OrbThrownData(this.gameObject, _throwDirection, color));
+        }
+    }
+
+    /// <summary>
+    /// NPC ABSORB PLACEHOLDER. REMOVE AFTER DREAMHACK!
+    /// </summary>
+    private IEnumerator NPCAbsorb(Transform nTran) {
+        while (transform.localScale != Vector3.zero) {
+            transform.position = Vector3.MoveTowards(transform.position, nTran.position, Time.deltaTime * 2);
+            transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.zero, Time.deltaTime);
+            yield return null;
         }
     }
 
