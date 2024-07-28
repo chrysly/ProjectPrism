@@ -12,6 +12,7 @@ public class UIOrb
 {
     private Transform _currPos; //???
     private Image _img;
+    private float _orbSpeed = 6f;
 
     public UIOrb(Image i, Transform t) {
         _currPos = t;
@@ -46,7 +47,7 @@ public class UIOrb
     }
 
     public void MoveToPos(Vector2 endPos, float time) {
-        _img.rectTransform.localPosition = Vector3.Slerp(_img.rectTransform.localPosition, endPos, 0.01f);
+        _img.rectTransform.localPosition = Vector3.Slerp(_img.rectTransform.localPosition, endPos, Time.deltaTime * _orbSpeed);
     }
 
     public void SetOrbColor(EColor color) { _img.color = color.GetColor(); }
