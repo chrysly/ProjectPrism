@@ -36,6 +36,8 @@ public class OrbThrow : MonoBehaviour {
 
     public void OrbOff() {
         this.gameObject.SetActive(false);
+        //TODO: refactor after trailer, this should not be here lol
+        GetComponentInChildren<TrailRenderer>().Clear();
     }
 
     public void OrbOn() {
