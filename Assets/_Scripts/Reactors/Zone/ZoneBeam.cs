@@ -10,9 +10,11 @@ using System.Collections;
 public class ZoneBeam : MonoBehaviour {
 
     private MeshFilter _meshFilter;
+    private MeshRenderer _meshRenderer;
     private Mesh _mesh;
     private Zone _zone;
     private float _size;
+    private Material _material;
     [SerializeField] private bool dynamicUpdate = false;
 
     private void Update() {
@@ -22,7 +24,7 @@ public class ZoneBeam : MonoBehaviour {
         }
     }
 
-    public void Initialize(Zone zone, float size) {
+    public void Initialize(Zone zone, float size, Material material) {
         _size = size;
         LinkZone(zone);
         
@@ -35,6 +37,8 @@ public class ZoneBeam : MonoBehaviour {
         _mesh.RecalculateNormals();
         _mesh.RecalculateBounds();
         _meshFilter = GetComponent<MeshFilter>();
+        _meshRenderer = GetComponent<MeshRenderer>();
+        _meshRenderer.sharedMaterials = new[] { new Material(material) };   //yes i know no it is not permanent
         _meshFilter.mesh = _mesh;
     }
     

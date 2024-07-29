@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1859472277404791834
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_RectZone
-  m_Shader: {fileID: -6465566751694194690, guid: db8b237d841920644a5d3d22b5e242f3,
+  m_Name: YBeam
+  m_Shader: {fileID: -6465566751694194690, guid: 3cff279935132d645808f4ffbf4afb1a,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -51,17 +38,28 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.61
-    - _Amplitude: 0.5
-    - _Distance: 2.85
-    - _Edge_Falloff: 4.97
-    - _Falloff: 34.46
-    - _Falloff_Size: 5.15
-    - _Pulse_Falloff: 1
+    - _Alpha: 1
+    - _Amplitude: 4
+    - _Dither: -0.3
+    - _Edge1: -6.72
+    - _Edge2: 7.02
+    - _Gradient: -5.3
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Thickness: 0.13
+    - _Wavelength: 3
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0, a: 0}
-    - _Edge_Color: {r: 8, g: 0, b: 0, a: 0}
+    - _Color: {r: 4.062605, g: 4.062605, b: 0.15931785, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &5025380972883448336
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

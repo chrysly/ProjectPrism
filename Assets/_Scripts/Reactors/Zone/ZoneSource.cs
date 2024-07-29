@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter))]
 public class ZoneSource : MonoBehaviour {
     [SerializeField] private Zone zone;
+    [SerializeField] private Material material;
     [SerializeField] private float sourceSize;
     private void OnDrawGizmos() {
         Gizmos.color = Color.white;
@@ -25,6 +26,7 @@ public class ZoneSource : MonoBehaviour {
         beam.transform.rotation = Quaternion.identity;
         beam.transform.name = "Zone Beam";
         beam.transform.SetParent(transform);
-        beam.AddComponent<ZoneBeam>().Initialize(zone, sourceSize);
+        beam.AddComponent<MeshRenderer>();
+        beam.AddComponent<ZoneBeam>().Initialize(zone, sourceSize, material);
     }
 }
