@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 2476339535433769764}
   - component: {fileID: 7919335692935916971}
   - component: {fileID: 2884685928195517409}
+  - component: {fileID: 8048615058160769693}
+  - component: {fileID: 883887816160702274}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -259,6 +261,35 @@ MonoBehaviour:
   colorSwapRate: 0.2
   logToConsole: 1
 --- !u!114 &2884685928195517409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2482604075890481654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03c3a47455439b24c86afc8699fbbc39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 0}
+  respawnDuration: 1
+--- !u!114 &8048615058160769693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2482604075890481654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89054668d99da844d94c6d22c30c12fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 2614196966288233128}
+  colorSwapRate: 0.2
+  logToConsole: 1
+--- !u!114 &883887816160702274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
