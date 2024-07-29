@@ -24,6 +24,16 @@ PrefabInstance:
       propertyPath: _color
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2378030480789552907, guid: a6bf1c4b747f6ef4c915e0b0d92e1e93,
+        type: 3}
+      propertyPath: shineFX
+      value: 
+      objectReference: {fileID: 6927331203709443998}
+    - target: {fileID: 2378030480789552907, guid: a6bf1c4b747f6ef4c915e0b0d92e1e93,
+        type: 3}
+      propertyPath: sparkFX
+      value: 
+      objectReference: {fileID: 7877648568031344601}
     - target: {fileID: 2469793246041676046, guid: a6bf1c4b747f6ef4c915e0b0d92e1e93,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -224,3 +234,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6bf1c4b747f6ef4c915e0b0d92e1e93, type: 3}
+--- !u!2083052967 &6927331203709443998 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 8804525526741594692, guid: a6bf1c4b747f6ef4c915e0b0d92e1e93,
+    type: 3}
+  m_PrefabInstance: {fileID: 1877198776999751130}
+  m_PrefabAsset: {fileID: 0}
+--- !u!2083052967 &7877648568031344601 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 8601349674760231427, guid: a6bf1c4b747f6ef4c915e0b0d92e1e93,
+    type: 3}
+  m_PrefabInstance: {fileID: 1877198776999751130}
+  m_PrefabAsset: {fileID: 0}
