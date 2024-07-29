@@ -18,6 +18,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 15ddf4ef173e4e441abc3d4139adc5a9, type: 2}
+    - target: {fileID: 8165936881668043019, guid: 24e2b42d469e9d14b91f67487bc7dc65,
+        type: 3}
+      propertyPath: safeColor
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8210841491092911374, guid: 24e2b42d469e9d14b91f67487bc7dc65,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -71,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 9076609399832021297, guid: 24e2b42d469e9d14b91f67487bc7dc65,
         type: 3}
       propertyPath: m_Name
-      value: Zone Pair Variant
+      value: YZone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -68,10 +68,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8120715411800132352, guid: 5baf83a5ab0008948becc9c102ffbdff,
+        type: 3}
+      propertyPath: safeColor
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8941676988998038330, guid: 5baf83a5ab0008948becc9c102ffbdff,
         type: 3}
       propertyPath: m_Name
-      value: Zone Pair Variant
+      value: CZone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
