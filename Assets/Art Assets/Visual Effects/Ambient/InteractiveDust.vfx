@@ -1274,7 +1274,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":0.9999999403953552,"g":0.9999999403953552,"b":0.9999999403953552,"a":1.0},"time":0.49764248728752139},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.10000763088464737},{"alpha":1.0,"time":0.48587778210639956},{"alpha":1.0,"time":0.800000011920929},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.24528300762176515,"g":0.24528300762176515,"b":0.24528300762176515,"a":1.0},"time":0.0},{"color":{"r":0.2528302073478699,"g":0.2528302073478699,"b":0.2528302073478699,"a":1.0},"time":0.4882429242134094},{"color":{"r":0.20754718780517579,"g":0.20754718780517579,"b":0.20754718780517579,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":0.6470588445663452,"time":0.10000763088464737},{"alpha":0.6274510025978088,"time":0.48587778210639956},{"alpha":0.7019608020782471,"time":0.800000011920929},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: Color

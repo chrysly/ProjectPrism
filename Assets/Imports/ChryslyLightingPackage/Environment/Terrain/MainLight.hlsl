@@ -58,6 +58,7 @@ void AddAdditionalLights_float(UnityTexture2D posterization, float Smoothness, f
     half total = Diffuse + Specular;
     // If no light touches this pixel, set the color to the main light's color
     Color = total <= 0 ? MainColor : Color / total;
+    Color = 0;
 }
 
 #endif

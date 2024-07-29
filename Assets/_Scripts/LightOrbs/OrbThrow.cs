@@ -36,6 +36,8 @@ public class OrbThrow : MonoBehaviour {
 
     public void OrbOff() {
         this.gameObject.SetActive(false);
+        //TODO: refactor after trailer, this should not be here lol
+        GetComponentInChildren<TrailRenderer>().Clear();
     }
 
     public void OrbOn() {
@@ -47,10 +49,11 @@ public class OrbThrow : MonoBehaviour {
     private void MoveOrb() {
         if (_thrown) {  
             // move towards desired point
-            _t.position = Vector3.MoveTowards(_t.position, _throwDirection, _player.ThrowForce * Time.deltaTime * _speedCurve.Evaluate(TimeManagement()));
+            _t.position = Vector3.MoveTowards(_t.position, _throwPoint.position + _throwDirection.normalized * _player.ThrowDistance, 
+                                             _player.ThrowForce * Time.deltaTime * _speedCurve.Evaluate(TimeManagement()));
         } else { 
             // return to the player
-            _t.position = Vector3.MoveTowards(_t.position, new Vector3(_throwPoint.position.x, _throwPoint.position.y, _throwPoint.position.z), _player.ThrowForce * Time.deltaTime);
+            _t.position = Vector3.MoveTowards(_t.position, _throwPoint.position, _player.ThrowForce * Time.deltaTime);
         }
 
         // once it gets close to the player deactivate orb
@@ -64,6 +67,12 @@ public class OrbThrow : MonoBehaviour {
         }
     }
 
+    /* private void OnDrawGizmos() {
+        if (Event.current.type == EventType.Repaint) {
+            UnityEditor.Handles.ArrowHandleCap(0, _throwPoint.position, Quaternion.LookRotation(_throwDirection, Vector3.up), 2, EventType.Repaint);
+        }
+    }*/
+
     public void ThrowOrb() {
         // well shit i have to initialize this again bc i deactivate the object --> looking for solutions....
         _sender = GameObject.FindGameObjectWithTag("Player");
@@ -73,7 +82,7 @@ public class OrbThrow : MonoBehaviour {
         // ---
 
         _t.position = _throwPoint.position;
-        _throwDirection = new Vector3(_throwPoint.position.x, _throwPoint.position.y, _throwPoint.position.z) + _throwPoint.forward * _player.ThrowDistance;
+        _throwDirection = _throwPoint.forward * _player.ThrowDistance;
         StartCoroutine(Thrown());
     }
 
@@ -100,13 +109,18 @@ public class OrbThrow : MonoBehaviour {
 
         // probably send out an event for animation?
         _thrown = false;
-        if (!coll.GetComponent<Player>()) SpawnFX(transform.position);
-
+        
         /// NPC ABSORB PLACEHOLDER. REMOVE AFTER DREAMHACK!
-        if (coll.GetComponent<NPC>()) {
+        if (coll.TryGetComponent(out NPC _)) {
             StartCoroutine(NPCAbsorb(coll.transform));
             interrupt = true;
+        } else if (coll.TryGetComponent(out OrbAlter alter)) {
+            StartCoroutine(PillarOrbit(alter, new OrbThrownData(this.gameObject, _throwDirection, _color)));
+            interrupt = true;
+            return;
         }
+
+        if (!coll.GetComponent<Player>()) SpawnFX(transform.position);
 
         Interactable interactable = coll.GetComponent<Interactable>();
 
@@ -125,6 +139,23 @@ public class OrbThrow : MonoBehaviour {
             yield return null;
         }
     }
+
+    /// <summary>
+    /// PLACEHOLDER, REMOVE AFTER DREAMHACK!
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator PillarOrbit(OrbAlter alter, OrbThrownData data) {
+        while (_t.position != alter.path.position) {
+            _t.position = Vector3.MoveTowards(_t.position, alter.path.position, _player.ThrowForce * Time.deltaTime);
+            yield return null;
+        } alter.pathAnimator.SetTrigger("MovePath");
+        yield return null;
+        while (!alter.pathAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {
+            _t.position = alter.path.position;
+            yield return null;
+        } alter.InteractAction(data);
+    }
+
 
     public EColor GetOrbColor() {
         return _color;

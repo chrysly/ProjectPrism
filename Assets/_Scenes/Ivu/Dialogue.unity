@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -191,6 +191,10 @@ MonoBehaviour:
   pillar: {fileID: 1088942328}
   togglables:
   - {fileID: 1708624154}
+  targetColor: 0
+  planeAnim: {fileID: 0}
+  path: {fileID: 0}
+  pathAnimator: {fileID: 0}
 --- !u!65 &149678214
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1306,6 +1310,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1192866705663240092, guid: 33850502b574af140b76fa1a4278bf08,
+        type: 3}
+      propertyPath: _speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4423695540579245648, guid: 33850502b574af140b76fa1a4278bf08,
         type: 3}
       propertyPath: m_Name
@@ -1365,6 +1374,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434532638966818230, guid: 33850502b574af140b76fa1a4278bf08,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434532638966818230, guid: 33850502b574af140b76fa1a4278bf08,
+        type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434532638966818230, guid: 33850502b574af140b76fa1a4278bf08,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
