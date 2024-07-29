@@ -122,7 +122,7 @@ MonoBehaviour:
   _objectName: block
   _canHoldOrb: 0
   _maxHeldOrbs: 0
-  _speed: 1
+  _speed: 10
 --- !u!1 &7698710177084346207
 GameObject:
   m_ObjectHideFlags: 0
