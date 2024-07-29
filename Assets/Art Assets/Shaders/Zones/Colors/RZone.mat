@@ -51,7 +51,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.61
+    - _Alpha: 0.204
     - _Amplitude: 0.5
     - _Distance: 2.85
     - _Edge_Falloff: 4.97
