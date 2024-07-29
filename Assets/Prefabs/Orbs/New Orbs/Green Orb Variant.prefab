@@ -125,6 +125,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2019428800719891962, guid: 97dc813b6bde81c42bcfe91778bd6903,
         type: 3}
+      propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[0].m_Name
+      value: Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019428800719891962, guid: 97dc813b6bde81c42bcfe91778bd6903,
+        type: 3}
       propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[1].m_Name
       value: Gradient
       objectReference: {fileID: 0}

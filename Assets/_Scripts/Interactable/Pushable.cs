@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class Pushable : Interactable
 {
+    [SerializeField] private Animator planeLeft, planeRight,
+                                      planeForward, planeBack;
     [SerializeField] protected float _speed = 1f;
 
     protected bool _isBeingPushed = false;

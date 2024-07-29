@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 /// <summary>
 /// Behavior of a thrown orb
@@ -28,6 +29,9 @@ public class OrbThrow : MonoBehaviour {
     private Transform _t;
     private Transform _throwPoint;
 
+    /// DREAMHACK DATA
+    public VisualEffect shineFX;
+    public VisualEffect sparkFX;
     private bool interrupt;
 
     void FixedUpdate() {
@@ -133,6 +137,7 @@ public class OrbThrow : MonoBehaviour {
     /// NPC ABSORB PLACEHOLDER. REMOVE AFTER DREAMHACK!
     /// </summary>
     private IEnumerator NPCAbsorb(Transform nTran) {
+        if (TryGetComponent(out Rigidbody rb)) Destroy(rb);
         while (transform.localScale != Vector3.zero) {
             transform.position = Vector3.MoveTowards(transform.position, nTran.position, Time.deltaTime * 2);
             transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.zero, Time.deltaTime);
@@ -145,6 +150,7 @@ public class OrbThrow : MonoBehaviour {
     /// </summary>
     /// <returns></returns>
     private IEnumerator PillarOrbit(OrbAlter alter, OrbThrownData data) {
+        if (TryGetComponent(out Rigidbody rb)) { Debug.Log("hey"); Destroy(rb); }
         while (_t.position != alter.path.position) {
             _t.position = Vector3.MoveTowards(_t.position, alter.path.position, _player.ThrowForce * Time.deltaTime);
             yield return null;

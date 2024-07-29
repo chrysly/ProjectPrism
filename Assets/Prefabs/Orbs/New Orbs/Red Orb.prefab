@@ -220,6 +220,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _color: 4
+  shineFX: {fileID: 1258658716464563645}
+  sparkFX: {fileID: 2019428800719891962}
   orbFX: {fileID: 3034321876031249856, guid: affc8442be1822545ae3fc1218b26abb, type: 3}
 --- !u!135 &8473349618148041343
 SphereCollider:
