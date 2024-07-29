@@ -15,9 +15,12 @@ public class OrbThrow : MonoBehaviour {
     [SerializeField] private float _collectRadius;
     [SerializeField] private AnimationCurve _speedCurve;
     //Added for identification of orbs
-    [SerializeField] private EColor color;
+    [SerializeField] private EColor _color;
     private float _animStartTime = 0f;
 
+    // Accessors
+    public EColor Color => _color;
+    
     // apparently this is like 2 times faster bc transform is an extern
     /// <summary>
     /// Transform of this object
@@ -25,8 +28,10 @@ public class OrbThrow : MonoBehaviour {
     private Transform _t;
     private Transform _throwPoint;
 
+    private bool interrupt;
+
     void FixedUpdate() {
-        MoveOrb();
+        if (!interrupt) MoveOrb();
     }
 
     public void OrbOff() {
@@ -42,10 +47,11 @@ public class OrbThrow : MonoBehaviour {
     private void MoveOrb() {
         if (_thrown) {  
             // move towards desired point
-            _t.position = Vector3.MoveTowards(_t.position, _throwDirection, _player.ThrowForce * Time.deltaTime * _speedCurve.Evaluate(TimeManagement()));
+            _t.position = Vector3.MoveTowards(_t.position, _throwPoint.position + _throwDirection.normalized * _player.ThrowDistance, 
+                                             _player.ThrowForce * Time.deltaTime * _speedCurve.Evaluate(TimeManagement()));
         } else { 
             // return to the player
-            _t.position = Vector3.MoveTowards(_t.position, new Vector3(_throwPoint.position.x, _throwPoint.position.y, _throwPoint.position.z), _player.ThrowForce * Time.deltaTime);
+            _t.position = Vector3.MoveTowards(_t.position, _throwPoint.position, _player.ThrowForce * Time.deltaTime);
         }
 
         // once it gets close to the player deactivate orb
@@ -59,6 +65,12 @@ public class OrbThrow : MonoBehaviour {
         }
     }
 
+    /* private void OnDrawGizmos() {
+        if (Event.current.type == EventType.Repaint) {
+            UnityEditor.Handles.ArrowHandleCap(0, _throwPoint.position, Quaternion.LookRotation(_throwDirection, Vector3.up), 2, EventType.Repaint);
+        }
+    }*/
+
     public void ThrowOrb() {
         // well shit i have to initialize this again bc i deactivate the object --> looking for solutions....
         _sender = GameObject.FindGameObjectWithTag("Player");
@@ -68,7 +80,7 @@ public class OrbThrow : MonoBehaviour {
         // ---
 
         _t.position = _throwPoint.position;
-        _throwDirection = new Vector3(_throwPoint.position.x, _throwPoint.position.y, _throwPoint.position.z) + _throwPoint.forward * _player.ThrowDistance;
+        _throwDirection = _throwPoint.forward * _player.ThrowDistance;
         StartCoroutine(Thrown());
     }
 
@@ -95,17 +107,56 @@ public class OrbThrow : MonoBehaviour {
 
         // probably send out an event for animation?
         _thrown = false;
+        
+        /// NPC ABSORB PLACEHOLDER. REMOVE AFTER DREAMHACK!
+        if (coll.TryGetComponent(out NPC _)) {
+            StartCoroutine(NPCAbsorb(coll.transform));
+            interrupt = true;
+        } else if (coll.TryGetComponent(out OrbAlter alter)) {
+            StartCoroutine(PillarOrbit(alter, new OrbThrownData(this.gameObject, _throwDirection, _color)));
+            interrupt = true;
+            return;
+        }
+
         if (!coll.GetComponent<Player>()) SpawnFX(transform.position);
 
         Interactable interactable = coll.GetComponent<Interactable>();
 
         if (interactable != null) {
-            interactable.InteractAction(new OrbThrownData(this.gameObject, _throwDirection, color));
+            interactable.InteractAction(new OrbThrownData(this.gameObject, _throwDirection, _color));
         }
     }
 
+    /// <summary>
+    /// NPC ABSORB PLACEHOLDER. REMOVE AFTER DREAMHACK!
+    /// </summary>
+    private IEnumerator NPCAbsorb(Transform nTran) {
+        while (transform.localScale != Vector3.zero) {
+            transform.position = Vector3.MoveTowards(transform.position, nTran.position, Time.deltaTime * 2);
+            transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.zero, Time.deltaTime);
+            yield return null;
+        }
+    }
+
+    /// <summary>
+    /// PLACEHOLDER, REMOVE AFTER DREAMHACK!
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator PillarOrbit(OrbAlter alter, OrbThrownData data) {
+        while (_t.position != alter.path.position) {
+            _t.position = Vector3.MoveTowards(_t.position, alter.path.position, _player.ThrowForce * Time.deltaTime);
+            yield return null;
+        } alter.pathAnimator.SetTrigger("MovePath");
+        yield return null;
+        while (!alter.pathAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {
+            _t.position = alter.path.position;
+            yield return null;
+        } alter.InteractAction(data);
+    }
+
+
     public EColor GetOrbColor() {
-        return color;
+        return _color;
     }
     
     //TODO: DELETE, TEMP FOR VISUALS
