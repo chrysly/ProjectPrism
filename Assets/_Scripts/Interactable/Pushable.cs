@@ -7,10 +7,11 @@ using UnityEngine;
 /// </summary>
 public class Pushable : Interactable
 {
+    [SerializeField] protected float _speed = 1f;
+
     protected bool _isBeingPushed = false;
 
     protected Vector3 _destination;
-    protected float _speed = 1f;
 
     // will be the size of a standard tile
     protected float _detectionRadius = 1f;
@@ -26,7 +27,7 @@ public class Pushable : Interactable
                 _t.position = _destination;
                 _isBeingPushed = false;
             } else {
-                _t.position = Vector3.MoveTowards(_t.position, _destination, _speed);
+                _t.position = Vector3.MoveTowards(_t.position, _destination, _speed * Time.deltaTime);
             }
         }
     }
