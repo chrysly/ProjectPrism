@@ -5,8 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2924ac8b-54fc-4cf0-8975-72bf9d60d304" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Glint 1.vfx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Glint 1.vfx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Orbs/Red Orb Impact.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Orbs/Red Orb Impact.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Orbs/Revamped Orb/Sparks.vfx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Orbs/Revamped Orb/Sparks.vfx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Area Light.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Area Light.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Area.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Area.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/CrystalProjection.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/CrystalProjection.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Flat Light.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Flat Light.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Glint 1.vfx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Glint 1.vfx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Glint.vfx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Glint.vfx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Projection.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Projection.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Radial Light.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Radial Light.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Radial.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Radial.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Spotlight.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Spotlight.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Spotlight.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Spotlight.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/light.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/light.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/offsetplane.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/offsetplane.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/spark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/spark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shine.vfx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shine.vfx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Chrysly/Danger Zone.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Chrysly/Danger Zone.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +140,7 @@
       <workItem from="1720570419870" duration="6074000" />
       <workItem from="1721952899668" duration="5190000" />
       <workItem from="1722059373049" duration="9401000" />
+      <workItem from="1722290044772" duration="331000" />
     </task>
     <servers />
   </component>
