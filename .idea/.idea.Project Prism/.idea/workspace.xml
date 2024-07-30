@@ -5,9 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2924ac8b-54fc-4cf0-8975-72bf9d60d304" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Prism/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Prism/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Orbs/Revamped Orb/Sparks.vfx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Orbs/Revamped Orb/Sparks.vfx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Area Light.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Area Light.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Area.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Area.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/CrystalProjection.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/CrystalProjection.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Flat Light.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Flat Light.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Glint 1.vfx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Glint 1.vfx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Glint.vfx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Glint.vfx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Projection.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Projection.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Radial Light.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Radial Light.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Radial.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Radial.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Spotlight.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Spotlight.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Spotlight.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Spotlight.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/light.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/light.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/offsetplane.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/offsetplane.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/spark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/spark.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shine.vfx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shine.vfx.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Chrysly/Danger Zone.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Chrysly/Danger Zone.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Reactors/Zone/ZoneSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Reactors/Zone/ZoneSource.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,27 +63,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "zones/chrysly",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;chrysly&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Chris\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Chris\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
-      "C:\\Users\\Chris\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Chris\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Chris\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Chris\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.18f1\Editor\Unity.exe" />
@@ -109,6 +138,9 @@
       <workItem from="1720478144094" duration="595000" />
       <workItem from="1720480290689" duration="1179000" />
       <workItem from="1720570419870" duration="6074000" />
+      <workItem from="1721952899668" duration="5190000" />
+      <workItem from="1722059373049" duration="9401000" />
+      <workItem from="1722290044772" duration="331000" />
     </task>
     <servers />
   </component>

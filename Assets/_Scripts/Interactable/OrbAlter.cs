@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.VFX;
 
 //TODO: Refactor to "Sender" class
 public class OrbAlter : Interactable {
@@ -16,6 +17,8 @@ public class OrbAlter : Interactable {
     public Animator pathAnimator;
     private MeshRenderer currOrbRenderer;
     private EColor eColor;
+    private VisualEffect shineFX, sparkFX;
+    [SerializeField] private OrbColorData colorData;
 
     private GameObject activeDisplayOrb;
     
@@ -24,10 +27,16 @@ public class OrbAlter : Interactable {
         ///base.InteractAction(data);
         EColor eColor = activeDisplayOrb == null ? data.Color : data.Color.Add(this.eColor);
         Color orbColor = eColor.GetColor();
+        Destroy(data.OrbObject);
         if (activeDisplayOrb == null) {
             activeDisplayOrb = Instantiate(data.OrbObject, displayPoint.position, Quaternion.identity);
-            Destroy(activeDisplayOrb.GetComponent<OrbThrow>());
-            activeDisplayOrb.transform.DOScale(1f, 1f);
+            if (activeDisplayOrb.TryGetComponent(out OrbThrow orbThrow)) {
+                shineFX = orbThrow.shineFX;
+                sparkFX = orbThrow.sparkFX;
+                Destroy(orbThrow);
+            }
+            if (activeDisplayOrb.TryGetComponent(out Rigidbody rb)) Destroy(rb);
+            activeDisplayOrb.transform.DOScale(0.6f, 1f);
             activeDisplayOrb.SetActive(true);
             currOrbRenderer = activeDisplayOrb.GetComponentInChildren<MeshRenderer>(true);
             this.eColor = data.Color;
@@ -44,18 +53,33 @@ public class OrbAlter : Interactable {
 
     private void CheckTogglables(OrbThrownData data) {
         foreach (Togglable togglable in togglables) {
-            togglable.Toggle(data);
+            if (togglable) togglable.Toggle(data);
         }
     }
 
     private IEnumerator DOColor(Color targetColor, OrbThrownData data) {
         bool colorMatch = targetColor == this.targetColor.GetColor();
+        Gradient gradShineInit = shineFX.GetGradient("Gradient Color"),
+                 gradSparkInit = sparkFX.GetGradient("Gradient");
+        Gradient gradBeamTarget = data.Color == EColor.Red ? colorData.rLightBeamGradient
+                                : data.Color == EColor.Green ? colorData.gLightBeamGradient
+                                : data.Color == EColor.Yellow ? colorData.yLightBeamGradient
+                                : null;
+        Gradient gradSparkTarget = data.Color == EColor.Red ? colorData.rSparksGradient
+                                 : data.Color == EColor.Green ? colorData.gSparksGradient
+                                 : data.Color == EColor.Yellow ? colorData.ySparksGradient
+                                 : null;
+
         targetColor.a = 0;
         Vector4 currColor = eColor.GetColor();
         float lerpVal = 0;
         if (colorMatch) planeAnim.SetTrigger("Blink");
         while (lerpVal < 1) {
-            lerpVal = Mathf.MoveTowards(lerpVal, 1, Time.deltaTime * 2);
+            if (gradBeamTarget != null) {
+                shineFX.SetGradient("Gradient Color", LerpGradient(gradShineInit, gradBeamTarget, lerpVal));
+                sparkFX.SetGradient("Gradient", LerpGradient(gradSparkInit, gradSparkTarget, lerpVal));
+                sparkFX.SetGradient("Color", LerpGradient(gradSparkInit, gradSparkTarget, lerpVal));
+            } lerpVal = Mathf.MoveTowards(lerpVal, 1, Time.deltaTime * 2);
             MaterialPropertyBlock mpb = new();
             pillar.GetPropertyBlock(mpb);
             Vector4 nColor = Vector4.Lerp(currColor, targetColor, lerpVal);
@@ -67,5 +91,47 @@ public class OrbAlter : Interactable {
             currOrbRenderer.SetPropertyBlock(mpb);
             yield return null;
         } if (colorMatch) CheckTogglables(data);
+    }
+
+    private Gradient LerpGradient(Gradient a, Gradient b, float t) {
+        var keysTimes = new List<float>();
+
+        for (int i = 0; i < a.colorKeys.Length; i++) {
+            float k = a.colorKeys[i].time;
+            if (!keysTimes.Contains(k))
+                keysTimes.Add(k);
+        }
+
+        for (int i = 0; i < b.colorKeys.Length; i++) {
+            float k = b.colorKeys[i].time;
+            if (!keysTimes.Contains(k))
+                keysTimes.Add(k);
+        }
+
+        for (int i = 0; i < a.alphaKeys.Length; i++) {
+            float k = a.alphaKeys[i].time;
+            if (!keysTimes.Contains(k))
+                keysTimes.Add(k);
+        }
+
+        for (int i = 0; i < b.alphaKeys.Length; i++) {
+            float k = b.alphaKeys[i].time;
+            if (!keysTimes.Contains(k))
+                keysTimes.Add(k);
+        }
+
+        GradientColorKey[] clrs = new GradientColorKey[keysTimes.Count];
+        GradientAlphaKey[] alphas = new GradientAlphaKey[keysTimes.Count];
+
+        for (int i = 0; i < keysTimes.Count; i++) {
+            float key = keysTimes[i];
+            var clr = Color.Lerp(a.Evaluate(key), b.Evaluate(key), t);
+            clrs[i] = new GradientColorKey(clr, key);
+            alphas[i] = new GradientAlphaKey(clr.a, key);
+        }
+
+        Gradient g = new();
+        g.SetKeys(clrs, alphas);
+        return g;
     }
 }

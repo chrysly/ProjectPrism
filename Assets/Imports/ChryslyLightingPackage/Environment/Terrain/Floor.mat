@@ -39,6 +39,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _AddAdditionalLightsCustomFunction_cc165279e9a14e1aacb8ee4ddc8d0375_Posterization_10_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 9875244e50551a243847681c9acbf432, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AddAdditionalLights_4928e6a6c0b947a685339f1f81c2db1a_Posterization_1666173476_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 9875244e50551a243847681c9acbf432, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _AddAdditionalLights_85b9df58229b440a9667d7159d64640c_Posterization_1666173476_Texture2D:
         m_Texture: {fileID: 2800000, guid: 9875244e50551a243847681c9acbf432, type: 3}
         m_Scale: {x: 1, y: 1}
