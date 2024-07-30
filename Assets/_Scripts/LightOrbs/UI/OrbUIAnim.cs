@@ -13,6 +13,7 @@ public class OrbUIAnim : MonoBehaviour
     [SerializeField] private CanvasGroup _mainCanvas;   // for the entire canvas *cries*
     [SerializeField] private CanvasGroup _sideBitches;
     [SerializeField] private RectTransform _rectTransform;
+    [SerializeField] private OrbHandler _orbHandler;
     
     // ---
     private List<UIOrb> _orbs = new List<UIOrb>();
@@ -25,7 +26,7 @@ public class OrbUIAnim : MonoBehaviour
 
     void Start() {
         //OrbHandler.OnOrbsSwapped += StartAnim;
-        OrbHandler.OnOrbThrown += OnOrbThrown;
+        _orbHandler.OnThrowWindUp += OnOrbThrown;
         Player.OnSpawn += OnSpawn;
     }
 
