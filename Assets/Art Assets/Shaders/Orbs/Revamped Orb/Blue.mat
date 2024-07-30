@@ -60,5 +60,5 @@ Material:
     - _RotationSpeed: 3
     - _Scale: 0
     m_Colors:
-    - _Color: {r: 0.26344448, g: 0.78788203, b: 5.5908804, a: 0}
+    - _Color: {r: 0.13172224, g: 0.39394102, b: 2.7954402, a: 0}
   m_BuildTextureStacks: []

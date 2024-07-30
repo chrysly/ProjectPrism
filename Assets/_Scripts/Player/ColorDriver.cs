@@ -8,7 +8,7 @@ using Vector3 = UnityEngine.Vector3;
 
 [RequireComponent(typeof(OrbHandler))]
 public class ColorDriver : MonoBehaviour {
-    [SerializeField] private MeshRenderer _renderer;
+    [SerializeField] private Renderer _renderer;
     private Material _rgbMat;
     private OrbHandler _orbHandler;
 
