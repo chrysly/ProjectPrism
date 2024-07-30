@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 7919335692935916971}
   - component: {fileID: 2884685928195517409}
   - component: {fileID: 8048615058160769693}
-  - component: {fileID: 883887816160702274}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -286,23 +285,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89054668d99da844d94c6d22c30c12fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
+  _renderer: {fileID: 2635871205315688753}
   colorSwapRate: 0.2
   logToConsole: 1
---- !u!114 &883887816160702274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2482604075890481654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c3a47455439b24c86afc8699fbbc39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnPoint: {fileID: 0}
-  respawnDuration: 1
 --- !u!1 &3170021569406901050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,6 +1055,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4895455063155660773, guid: a2e6c8ee5dfdf0247b3d26c79bc35583,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c37c36fa9c461fd4a9987b0bb2c3f09d, type: 2}
     - target: {fileID: 5209162794013601292, guid: a2e6c8ee5dfdf0247b3d26c79bc35583,
         type: 3}
       propertyPath: m_CastShadows
@@ -1080,6 +1070,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2e6c8ee5dfdf0247b3d26c79bc35583, type: 3}
+--- !u!137 &2635871205315688753 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4895455063155660773, guid: a2e6c8ee5dfdf0247b3d26c79bc35583,
+    type: 3}
+  m_PrefabInstance: {fileID: 7450177076386229972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6810156569105065939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4172252750346619143, guid: a2e6c8ee5dfdf0247b3d26c79bc35583,
