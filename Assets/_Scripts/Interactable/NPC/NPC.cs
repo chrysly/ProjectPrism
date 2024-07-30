@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
+using Cinemachine;
 
 /// <summary>
 /// Npc, dialogue, their character model
@@ -13,6 +13,9 @@ public class NPC : Interactable
     [SerializeField] private Animator animator;
     [SerializeField] protected NPCData _npcData;
 
+    [SerializeField] private Animator screenspaceAnimator;
+    [SerializeField] private CinemachineVirtualCamera vc;
+    [SerializeField] private float orthoZoom;
     protected bool _dialogueStarted = false;
     protected int _dialogueIndex = 0;
 
@@ -25,7 +28,7 @@ public class NPC : Interactable
 
     public override void InteractAction(OrbThrownData data) {
         base.InteractAction(data);
-        if (!_dialogueStarted) { DialogueStart(); }
+        if (!_dialogueStarted) { StartCoroutine(IDialogue(data)); }
     }
 
     void Update() {
@@ -57,5 +60,15 @@ public class NPC : Interactable
     protected void EndDialoge() {
         //_ImageHolder.gameObject.SetActive(false);
         GameManager.Instance.EnterPlayerControls();
+    }
+
+    private IEnumerator IDialogue(OrbThrownData data) {
+        screenspaceAnimator.SetTrigger("Talk");
+        vc.Priority = 20;
+        while (vc.m_Lens.OrthographicSize != orthoZoom) {
+            vc.m_Lens.OrthographicSize = Mathf.MoveTowards(vc.m_Lens.OrthographicSize, orthoZoom, Time.deltaTime);
+            yield return null;
+        } yield return new WaitForSeconds(0.5f);
+        DialogueStart();
     }
 }
