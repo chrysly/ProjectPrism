@@ -52,6 +52,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 0.515
+    - _Falloff_Point: 1
     - _Frequency: 2
     - _Fresnel: 1.83
     - _QueueControl: 0

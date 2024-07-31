@@ -159,6 +159,7 @@ Transform:
   m_Children:
   - {fileID: 341145870270028009}
   - {fileID: 8099239838972382348}
+  - {fileID: 7073166388871834444}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1560616606872424622
@@ -257,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89054668d99da844d94c6d22c30c12fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
+  _renderer: {fileID: 2635871205315688753}
   colorSwapRate: 0.2
   logToConsole: 1
 --- !u!114 &2884685928195517409
@@ -964,6 +965,153 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1001 &3709310868913029348
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2464574271728498620}
+    m_Modifications:
+    - target: {fileID: 2152022229563355358, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152022229563355358, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152022229563355358, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 44.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4553073682621562626, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Flat Color
+      objectReference: {fileID: 0}
+    - target: {fileID: 4553073682621562626, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601106857364240962, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622917980259111872, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: driver
+      value: 
+      objectReference: {fileID: 7919335692935916971}
+    - target: {fileID: 5622917980259111872, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: ringLight
+      value: 
+      objectReference: {fileID: 333904899834283125}
+    - target: {fileID: 5622917980259111872, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: spotlight
+      value: 
+      objectReference: {fileID: 5367980847981043970}
+    - target: {fileID: 5622917980259111872, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: rIntensity
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622917980259111872, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: lightComponent
+      value: 
+      objectReference: {fileID: 3361825271267242042}
+    - target: {fileID: 5860011940331301800, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860011940331301800, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860011940331301800, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860011940331301800, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860011940331301800, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860011940331301800, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860011940331301800, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860011940331301800, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860011940331301800, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860011940331301800, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6507106036899936551, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+        type: 3}
+      propertyPath: m_Name
+      value: Player Light
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f863b016afc60224fa5d8c1e71ae8ee5, type: 3}
+--- !u!23 &333904899834283125 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4024065401887130769, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3709310868913029348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &3361825271267242042 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 2152022229563355358, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3709310868913029348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5367980847981043970 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8720368242990522854, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3709310868913029348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7073166388871834444 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5860011940331301800, guid: f863b016afc60224fa5d8c1e71ae8ee5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3709310868913029348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7450177076386229972
 PrefabInstance:
   m_ObjectHideFlags: 0
