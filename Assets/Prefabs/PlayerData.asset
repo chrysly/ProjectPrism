@@ -18,9 +18,8 @@ MonoBehaviour:
   _throwCooldown: 2
   _throwForce: 13
   _throwDistance: 6
-  _moveSpeed: 5
+  _moveSpeed: 2
   _turnSpeed: 675
   _linearDrag: 20
   _moveAccel: 15
-  _camAngleSkew: 45
   _gravityVal: 49

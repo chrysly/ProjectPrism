@@ -7,6 +7,8 @@ using UnityEngine;
 public class Bridge : Togglable {
     private MeshRenderer _renderer;
     private BoxCollider _collider;
+    [SerializeField] private float _disabledCutoff;
+    [SerializeField] private float _enabledCutoff;
 
     private void Awake() {
         _renderer = GetComponent<MeshRenderer>();
@@ -14,7 +16,7 @@ public class Bridge : Togglable {
 
         MaterialPropertyBlock mpb = new();
         _renderer.GetPropertyBlock(mpb);
-        mpb.SetFloat("_Cutoff", -0.6f);
+        mpb.SetFloat("_Cutoff", _disabledCutoff);
         _renderer.SetPropertyBlock(mpb);
     }
 
@@ -23,7 +25,7 @@ public class Bridge : Togglable {
         Material material = new Material(_renderer.materials[0]);
         material.SetColor("_Color", data.Color.GetColor());
         //material.DOFloat(1.25f, "_Cutoff", 3f);
-        StartCoroutine(UpdateCutoff(0.35f, 1.5f));
+        StartCoroutine(UpdateCutoff(_enabledCutoff, 1.5f));
         Material[] materials = { material };
         _renderer.materials = materials;
         _collider.enabled = true;   //TODO: refactor to dynamic collider toggle, should move with the shader
@@ -33,7 +35,7 @@ public class Bridge : Togglable {
         Material material = new Material(_renderer.materials[0]);
         material.SetColor("_Color", data.Color.GetColor());
         //material.DOFloat(0f, "_Cutoff", 1.5f);
-        StartCoroutine(UpdateCutoff(-0.6f, 0.75f));
+        StartCoroutine(UpdateCutoff(_disabledCutoff, 0.75f));
         Material[] materials = { material };
         _renderer.materials = materials;
         _collider.enabled = false;

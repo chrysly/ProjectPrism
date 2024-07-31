@@ -5,6 +5,7 @@ using System.Numerics;
 using DG.Tweening;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
+using Vector4 = UnityEngine.Vector4;
 
 [RequireComponent(typeof(OrbHandler))]
 public class ColorDriver : MonoBehaviour {
@@ -17,6 +18,9 @@ public class ColorDriver : MonoBehaviour {
 
     [SerializeField] private float colorSwapRate = 0.2f;
     [SerializeField] private bool logToConsole;
+
+    public delegate void ColorSwap(Vector4 color);
+    public event ColorSwap OnColorSwap; 
     
     private void Awake() {
         _orbHandler = GetComponent<OrbHandler>();
@@ -116,6 +120,8 @@ public class ColorDriver : MonoBehaviour {
         // DOTween.To(() => mpb.GetFloat("_RStrength"), x => mpb.SetFloat("_RStrength", x), rgb.x, colorSwapRate);
         // DOTween.To(() => mpb.GetFloat("_GStrength"), x => mpb.SetFloat("_GStrength", x), rgb.y, colorSwapRate);
         // DOTween.To(() => mpb.GetFloat("_BStrength"), x => mpb.SetFloat("_BStrength", x), rgb.z, colorSwapRate);
+        
+        OnColorSwap?.Invoke(rgb);
         
         DOVirtual.Float(0f, rgb.x, colorSwapRate, (float value) => {
             mpb.SetFloat("_RStrength", value);

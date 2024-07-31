@@ -13,7 +13,7 @@ public class OrbHandler : MonoBehaviour
     public static event OrbsSwapped OnOrbsSwapped;
 
     public delegate void OrbThrown(List<EColor> color);
-    public static event OrbThrown OnOrbThrown;
+    public event OrbThrown OnThrowWindUp;
     #endregion
 
     [SerializeField] private GameObject[] _heldOrbs;
@@ -23,7 +23,7 @@ public class OrbHandler : MonoBehaviour
     /// Event for when the player throws an orb
     /// </summary>
     public delegate void Throw(GameObject orb);
-    public static event Throw OnThrow;
+    public event Throw OnThrow;
 
     /// <summary>
     /// Publishes on any orb operation. Intended for an inventory check for player color swapping.
@@ -32,6 +32,8 @@ public class OrbHandler : MonoBehaviour
     public event InventoryOperation OnInventoryOperation;
 
     private Player _player;
+    public float throwDelay = 0.4f;
+    private bool _canThrow = true;
 
     // initialize the inventory
     private void Start() {
@@ -56,17 +58,29 @@ public class OrbHandler : MonoBehaviour
         foreach (GameObject orb in _heldOrbs) {
             if (orb != null) { cls.Add(orb.GetComponent<OrbThrow>().Color); }
         }
-        OnOrbThrown(cls);
 
-        if (_heldOrbsCount > 0) {
-            OnThrow(_heldOrbs[0]);
-            RemoveOrb();
+        if (_heldOrbsCount > 0 && _canThrow) {
+            OnThrowWindUp?.Invoke(cls);
+            StartCoroutine(IThrowTimer());
+            StartCoroutine(IThrowOrb());
         }
+    }
+
+    private IEnumerator IThrowTimer() {
+        _canThrow = false;
+        yield return new WaitForSeconds(_player.ThrowCooldown);
+        _canThrow = true;
+    }
+
+    private IEnumerator IThrowOrb() {
+        yield return new WaitForSeconds(throwDelay);
+        OnThrow?.Invoke(_heldOrbs[0]);
+        RemoveOrb();
     }
 
     public bool AddOrb(GameObject orb, bool setup = false) {
         if (_heldOrbsCount < _heldOrbs.Length) {
-            orb.SetActive(false);
+            if (setup) orb.SetActive(false);
             _heldOrbs[_heldOrbsCount] = orb;
             _heldOrbsCount++;
             if (!setup) OnInventoryOperation?.Invoke(ObjectToOrbArray());

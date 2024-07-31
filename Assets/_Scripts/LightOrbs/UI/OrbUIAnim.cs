@@ -13,6 +13,7 @@ public class OrbUIAnim : MonoBehaviour
     [SerializeField] private CanvasGroup _mainCanvas;   // for the entire canvas *cries*
     [SerializeField] private CanvasGroup _sideBitches;
     [SerializeField] private RectTransform _rectTransform;
+    [SerializeField] private OrbHandler _orbHandler;
     
     // ---
     private List<UIOrb> _orbs = new List<UIOrb>();
@@ -25,7 +26,7 @@ public class OrbUIAnim : MonoBehaviour
 
     void Start() {
         //OrbHandler.OnOrbsSwapped += StartAnim;
-        OrbHandler.OnOrbThrown += OnOrbThrown;
+        _orbHandler.OnThrowWindUp += OnOrbThrown;
         Player.OnSpawn += OnSpawn;
     }
 
@@ -39,7 +40,7 @@ public class OrbUIAnim : MonoBehaviour
         _mainCanvas.DOFade(1, _fadeTime);
 
         // create the orb objects and set their initial color + position
-        for (int i = 0; i < _orbImgs.Length; ++i) {
+        for (int i = 0; i < cls.Count; ++i) {
             UIOrb obj = new UIOrb(_orbImgs[i], _bckgImgs[i].transform);
             _orbs.Add(obj);
             obj.SetOrbColor(cls[i]);

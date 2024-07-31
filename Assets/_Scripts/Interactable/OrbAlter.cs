@@ -78,16 +78,15 @@ public class OrbAlter : Interactable {
             if (gradBeamTarget != null) {
                 shineFX.SetGradient("Gradient Color", LerpGradient(gradShineInit, gradBeamTarget, lerpVal));
                 sparkFX.SetGradient("Gradient", LerpGradient(gradSparkInit, gradSparkTarget, lerpVal));
-                sparkFX.SetGradient("Color", LerpGradient(gradSparkInit, gradSparkTarget, lerpVal));
             } lerpVal = Mathf.MoveTowards(lerpVal, 1, Time.deltaTime * 2);
             MaterialPropertyBlock mpb = new();
             pillar.GetPropertyBlock(mpb);
             Vector4 nColor = Vector4.Lerp(currColor, targetColor, lerpVal);
-            mpb.SetVector("_Circuit_Color", nColor * 1.9f);
+            mpb.SetVector("_Circuit_Color", nColor * Mathf.Pow(2, 1.9f));
             pillar.SetPropertyBlock(mpb);
             mpb = new();
             currOrbRenderer.GetPropertyBlock(mpb);
-            mpb.SetVector("_Color", nColor * 2.2f);
+            mpb.SetVector("_Color", nColor * Mathf.Pow(2, 2.2f));
             currOrbRenderer.SetPropertyBlock(mpb);
             yield return null;
         } if (colorMatch) CheckTogglables(data);
