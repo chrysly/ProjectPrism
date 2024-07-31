@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private OrbHandler _orbHandler;
     [SerializeField] private Animator animator;
-    private bool _canThrow = true;
 
     private float _moveSpeed;
     private float _alignmentMult = 1f;
@@ -30,7 +29,8 @@ public class PlayerController : MonoBehaviour
 
         // get player inputs
         GameManager.Instance.EnterPlayerControls();
-        OrbHandler.OnThrow += PlayerThrow;
+        _orbHandler.OnThrowWindUp += OrbHandler_OnThrowWindUp;
+        _orbHandler.OnThrow += PlayerThrow;
     }
 
     void Update() {
@@ -75,18 +75,7 @@ public class PlayerController : MonoBehaviour
                       : new Vector3 (0, _verticalMove.y - _player.GravityVal * Time.deltaTime, 0);
     }
 
-    private void PlayerThrow(GameObject orb) {
-        if (_canThrow) {
-            StartCoroutine(Throw());
+    private void OrbHandler_OnThrowWindUp(List<EColor> _) => animator.SetTrigger("Throw");
 
-            orb.SetActive(true);
-            orb.GetComponent<OrbThrow>().ThrowOrb();
-        }
-    }
-
-    IEnumerator Throw() {
-        _canThrow = false;
-        yield return _player.ThrowCooldown;
-        _canThrow = true;
-    }
+    private void PlayerThrow(GameObject orb) => orb.GetComponent<OrbThrow>().ThrowOrb();
 }
