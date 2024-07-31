@@ -75,7 +75,7 @@ public class OrbAlter : Interactable {
     }
 
     private IEnumerator DOColor(Color targetColor, OrbThrownData data) {
-        bool colorMatch = eColor == this.targetColor;
+        bool colorMatch = targetColor == this.targetColor.GetColor();
         Gradient gradShineInit = shineFX.GetGradient("Gradient Color"),
                  gradSparkInit = sparkFX.GetGradient("Gradient");
         Gradient gradBeamTarget = data.Color == EColor.Red ? colorData.rLightBeamGradient
