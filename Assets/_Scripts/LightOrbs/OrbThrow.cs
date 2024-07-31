@@ -34,14 +34,30 @@ public class OrbThrow : MonoBehaviour {
     public VisualEffect sparkFX;
     private bool interrupt;
 
+    void OnEnable() {
+        GetComponent<Rigidbody>().isKinematic = false;
+    }
+
     void FixedUpdate() {
         if (!interrupt) MoveOrb();
     }
 
     public void OrbOff() {
-        this.gameObject.SetActive(false);
         //TODO: refactor after trailer, this should not be here lol
         GetComponentInChildren<TrailRenderer>().Clear();
+        StopAllCoroutines();
+        StartCoroutine(Menguate());
+    }
+
+    private IEnumerator Menguate() {
+        GetComponent<Rigidbody>().isKinematic = true;
+        shineFX.Stop();
+        sparkFX.Stop();
+        while (Vector3.Distance(_t.localScale, Vector3.zero) > Mathf.Epsilon) {
+            _t.localScale = Vector3.MoveTowards(_t.localScale, Vector3.zero, Time.deltaTime);
+            yield return null;
+        } yield return new WaitUntil(() => sparkFX.aliveParticleCount == 0);
+        gameObject.SetActive(false);
     }
 
     public void OrbOn() {
@@ -64,7 +80,8 @@ public class OrbThrow : MonoBehaviour {
         if (!_thrown && Vector3.Distance(_throwPoint.position, _t.position) < _collectRadius) {
             _animStartTime = 0;
 
-            _player.OrbHandler.AddOrb(this.gameObject);
+            _player.OrbHandler.AddOrb(gameObject);
+            OrbOff();
 
             //_player.AddHeldOrb(_player.RemoveThrownOrb(this.gameObject));
             //OrbOff();
@@ -80,6 +97,7 @@ public class OrbThrow : MonoBehaviour {
     public void ThrowOrb() {
         // well shit i have to initialize this again bc i deactivate the object --> looking for solutions....
         gameObject.SetActive(true);
+        StopAllCoroutines();
         StartCoroutine(Grow());
         _sender = GameObject.FindGameObjectWithTag("Player");
         _player = _sender.GetComponent<Player>();
@@ -93,6 +111,8 @@ public class OrbThrow : MonoBehaviour {
     }
 
     private IEnumerator Grow() {
+        shineFX.Play();
+        sparkFX.Play();
         transform.localScale = Vector3.zero;
         while (transform.localScale != Vector3.one * 0.3f) {
             transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.one * 0.3f, Time.deltaTime);
@@ -114,6 +134,13 @@ public class OrbThrow : MonoBehaviour {
         return _animStartTime / _throwTime;
     }
     #endregion
+
+    public void ForceReturn(Player player) {
+        _t = transform;
+        _player = player;
+        _throwPoint = player.ThrowPoint;
+        _thrown = false;
+    }
 
     /// <summary>
     /// For when the orb comes into contact with an interactable
