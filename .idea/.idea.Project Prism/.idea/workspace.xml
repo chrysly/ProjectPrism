@@ -6,11 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="2924ac8b-54fc-4cf0-8975-72bf9d60d304" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Project Prism/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Project Prism/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Enviro/Area Light.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Enviro/Area Light.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Enviro/Area.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Enviro/Area.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/Red.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Enviro/Flat Light.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Enviro/Flat Light.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Enviro/Spotlight.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Enviro/Spotlight.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Enviro/Spotlight.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/Shaders/Volumetric Lighting/Enviro/Spotlight.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Chrysly/Lighting.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Chrysly/Lighting.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SpotlightComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SpotlightComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Chrysly/Danger Zone.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Chrysly/Danger Zone.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/DreamhackTrailer/1_lvl.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/DreamhackTrailer/1_lvl.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Interactable/OrbAlter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Interactable/OrbAlter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Player/ColorDriver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Player/ColorDriver.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +48,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "chrysly",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
