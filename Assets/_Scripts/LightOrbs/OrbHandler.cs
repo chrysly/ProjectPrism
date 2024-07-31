@@ -14,15 +14,17 @@ public class OrbHandler : MonoBehaviour
 
     public delegate void OrbThrown(List<EColor> color);
     public event OrbThrown OnThrowWindUp;
+
+    public event System.Action<OrbThrow[]> OnInitialize;
     #endregion
 
-    [SerializeField] private GameObject[] _heldOrbs;
+    [SerializeField] private OrbThrow[] _heldOrbs;
     private int _heldOrbsCount = 0;
 
     /// <summary>
     /// Event for when the player throws an orb
     /// </summary>
-    public delegate void Throw(GameObject orb);
+    public delegate void Throw(OrbThrow orb);
     public event Throw OnThrow;
 
     /// <summary>
@@ -38,15 +40,17 @@ public class OrbHandler : MonoBehaviour
     // initialize the inventory
     private void Start() {
         _player = GetComponent<Player>();
-        _heldOrbs = new GameObject[_player.InventorySlots];
+        _heldOrbs = new OrbThrow[_player.InventorySlots];
         GameManager.Instance.PlayerActionMap.Player.Throw.performed += ThrowOrb;
         GameManager.Instance.PlayerActionMap.Player.SwapOrbs.performed += SwapOrbs;
 
         // initialize spawn orbs
         foreach (GameObject obj in _player.startingOrbs) {
             GameObject instantiatedChild = Instantiate(obj);
-            AddOrb(instantiatedChild, true);
+            AddOrb(instantiatedChild.GetComponent<OrbThrow>(), true);
         }
+
+        OnInitialize?.Invoke(ObjectToOrbArray());
     }
 
     /// <summary>
@@ -55,8 +59,8 @@ public class OrbHandler : MonoBehaviour
     private void ThrowOrb(InputAction.CallbackContext context) {
         // set up the event data to send
         List <EColor> cls = new List <EColor>();
-        foreach (GameObject orb in _heldOrbs) {
-            if (orb != null) { cls.Add(orb.GetComponent<OrbThrow>().Color); }
+        foreach (OrbThrow orb in _heldOrbs) {
+            if (orb != null) { cls.Add(orb.Color); }
         }
 
         if (_heldOrbsCount > 0 && _canThrow) {
@@ -78,9 +82,9 @@ public class OrbHandler : MonoBehaviour
         RemoveOrb();
     }
 
-    public bool AddOrb(GameObject orb, bool setup = false) {
+    public bool AddOrb(OrbThrow orb, bool setup = false) {
         if (_heldOrbsCount < _heldOrbs.Length) {
-            if (setup) orb.SetActive(false);
+            if (setup) orb.gameObject.SetActive(false);
             _heldOrbs[_heldOrbsCount] = orb;
             _heldOrbsCount++;
             if (!setup) OnInventoryOperation?.Invoke(ObjectToOrbArray());
@@ -89,9 +93,9 @@ public class OrbHandler : MonoBehaviour
         return false;
     }
 
-    public GameObject RemoveOrb(bool setup = false) {
+    public OrbThrow RemoveOrb(bool setup = false) {
         if (_heldOrbsCount > 0) {
-            GameObject toReturn = _heldOrbs[0];
+            OrbThrow toReturn = _heldOrbs[0];
             _heldOrbs[0] = null;
             _heldOrbsCount--;
             for (int i = 0; i < _heldOrbsCount; i++) {
@@ -109,11 +113,11 @@ public class OrbHandler : MonoBehaviour
         if (_heldOrbsCount <= 1) { return; }    // not enough orbs to swap
 
         if (context.ReadValue<float>() >= 0) {    // swap to the right
-            GameObject _removedOrb = RemoveOrb();
+            OrbThrow _removedOrb = RemoveOrb();
             _heldOrbs[_heldOrbsCount] = _removedOrb;
             _heldOrbsCount++;
         } else {    // swap to the left
-            GameObject _removedOrb = RemoveOrb();       // jank method
+            OrbThrow _removedOrb = RemoveOrb();       // jank method
             _heldOrbs[_heldOrbsCount] = _removedOrb;
             _heldOrbsCount++;
 
@@ -124,8 +128,8 @@ public class OrbHandler : MonoBehaviour
 
         // setting up data to send to UI anim
         List<EColor> colors = new List<EColor>();
-        foreach (GameObject orb in _heldOrbs) {
-            if (orb != null) { colors.Add(orb.GetComponent<OrbThrow>().Color); }
+        foreach (OrbThrow orb in _heldOrbs) {
+            if (orb != null) { colors.Add(orb.Color); }
         }
 
         OnOrbsSwapped(colors);
@@ -136,7 +140,7 @@ public class OrbHandler : MonoBehaviour
     /// Conversion method for retrieving color data from orb
     /// </summary>
     /// <returns>A list of held orbs</returns>
-    private OrbThrow[] ObjectToOrbArray() {
+    public OrbThrow[] ObjectToOrbArray() {
         OrbThrow[] orbs = new OrbThrow[_heldOrbs.Length];
         for (int i = 0; i < _player.InventorySlots; i++) {
             if (_heldOrbs[i] != null) orbs[i] = _heldOrbs[i].GetComponentInChildren<OrbThrow>();

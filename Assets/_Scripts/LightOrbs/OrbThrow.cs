@@ -15,6 +15,8 @@ public class OrbThrow : MonoBehaviour {
     [SerializeField] private float _throwTime;
     [SerializeField] private float _collectRadius;
     [SerializeField] private AnimationCurve _speedCurve;
+    [SerializeField] private Collider coll;
+    [SerializeField] private Rigidbody rb;
     //Added for identification of orbs
     [SerializeField] private EColor _color;
     private float _animStartTime = 0f;
@@ -34,9 +36,7 @@ public class OrbThrow : MonoBehaviour {
     public VisualEffect sparkFX;
     private bool interrupt;
 
-    void OnEnable() {
-        GetComponent<Rigidbody>().isKinematic = false;
-    }
+    void OnEnable() => OrbOn();
 
     void FixedUpdate() {
         if (!interrupt) MoveOrb();
@@ -44,24 +44,28 @@ public class OrbThrow : MonoBehaviour {
 
     public void OrbOff() {
         //TODO: refactor after trailer, this should not be here lol
+        coll.enabled = false;
         GetComponentInChildren<TrailRenderer>().Clear();
         StopAllCoroutines();
         StartCoroutine(Menguate());
     }
 
     private IEnumerator Menguate() {
-        GetComponent<Rigidbody>().isKinematic = true;
+        rb.isKinematic = true;
         shineFX.Stop();
         sparkFX.Stop();
         while (Vector3.Distance(_t.localScale, Vector3.zero) > Mathf.Epsilon) {
-            _t.localScale = Vector3.MoveTowards(_t.localScale, Vector3.zero, Time.deltaTime);
+            _t.localScale = Vector3.MoveTowards(_t.localScale, Vector3.zero, Time.deltaTime * 2);
             yield return null;
         } yield return new WaitUntil(() => sparkFX.aliveParticleCount == 0);
         gameObject.SetActive(false);
     }
 
     public void OrbOn() {
-        this.gameObject.SetActive(true);    // does this work???
+        gameObject.SetActive(true);
+        rb.isKinematic = false;
+        coll.enabled = true;
+        interrupt = false;
     }
 
     // want to refactor how vars are taken from player SO and used here as variables
@@ -80,7 +84,8 @@ public class OrbThrow : MonoBehaviour {
         if (!_thrown && Vector3.Distance(_throwPoint.position, _t.position) < _collectRadius) {
             _animStartTime = 0;
 
-            _player.OrbHandler.AddOrb(gameObject);
+            interrupt = true;
+            _player.OrbHandler.AddOrb(this);
             OrbOff();
 
             //_player.AddHeldOrb(_player.RemoveThrownOrb(this.gameObject));
@@ -96,7 +101,7 @@ public class OrbThrow : MonoBehaviour {
 
     public void ThrowOrb() {
         // well shit i have to initialize this again bc i deactivate the object --> looking for solutions....
-        gameObject.SetActive(true);
+        OrbOn();
         StopAllCoroutines();
         StartCoroutine(Grow());
         _sender = GameObject.FindGameObjectWithTag("Player");
@@ -187,7 +192,7 @@ public class OrbThrow : MonoBehaviour {
     /// </summary>
     /// <returns></returns>
     private IEnumerator PillarOrbit(OrbAlter alter, OrbThrownData data) {
-        if (TryGetComponent(out Rigidbody rb)) { Debug.Log("hey"); Destroy(rb); }
+        if (TryGetComponent(out Rigidbody rb)) { Destroy(rb); }
         while (_t.position != alter.path.position) {
             _t.position = Vector3.MoveTowards(_t.position, alter.path.position, _player.ThrowForce * Time.deltaTime);
             yield return null;

@@ -25,8 +25,9 @@ public class ColorDriver : MonoBehaviour {
     private void Awake() {
         _orbHandler = GetComponent<OrbHandler>();
         _orbHandler.OnInventoryOperation += AdjustRGBValues;
+        _orbHandler.OnInitialize += AdjustRGBValues;
     }
-    
+
     #region ColorCheck
     //TODO: Refactor with new custom color system, why are you looking at this u bastard
     //     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣶⣄⡀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣤⣤⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣾⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -113,27 +114,31 @@ public class ColorDriver : MonoBehaviour {
         }
 
         _color = AdjustEColor(rgb);
-        if (logToConsole) Debug.Log(_color.ToString());
+        //if (logToConsole) Debug.Log(_color.ToString());
 
         MaterialPropertyBlock mpb = new ();
         _renderer.GetPropertyBlock(mpb);
+        
         // DOTween.To(() => mpb.GetFloat("_RStrength"), x => mpb.SetFloat("_RStrength", x), rgb.x, colorSwapRate);
         // DOTween.To(() => mpb.GetFloat("_GStrength"), x => mpb.SetFloat("_GStrength", x), rgb.y, colorSwapRate);
         // DOTween.To(() => mpb.GetFloat("_BStrength"), x => mpb.SetFloat("_BStrength", x), rgb.z, colorSwapRate);
         
         OnColorSwap?.Invoke(rgb);
-        
-        DOVirtual.Float(0f, rgb.x, colorSwapRate, (float value) => {
+
+        float strength = mpb.GetFloat("_RStrength");
+        DOVirtual.Float(strength, rgb.x, colorSwapRate, (float value) => {
             mpb.SetFloat("_RStrength", value);
             _renderer.SetPropertyBlock(mpb);
         });
-        
-        DOVirtual.Float(0f, rgb.y, colorSwapRate, (float value) => {
+
+        strength = mpb.GetFloat("_GStrength");
+        DOVirtual.Float(strength, rgb.y, colorSwapRate, (float value) => {
             mpb.SetFloat("_GStrength", value);
             _renderer.SetPropertyBlock(mpb);
         });
-        
-        DOVirtual.Float(0f, rgb.z, colorSwapRate, (float value) => {
+
+        strength = mpb.GetFloat("_BStrength");
+        DOVirtual.Float(strength, rgb.z, colorSwapRate, (float value) => {
             mpb.SetFloat("_BStrength", value);
             _renderer.SetPropertyBlock(mpb);
         });

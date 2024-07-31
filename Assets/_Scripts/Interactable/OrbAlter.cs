@@ -13,6 +13,8 @@ public class OrbAlter : Interactable {
     /// PLACEHOLDER VARIABLES;
     [SerializeField] private EColor targetColor;
     [SerializeField] private Animator planeAnim;
+    [SerializeField] private SpriteRenderer[] planeRenderers;
+
     public Transform path;
     public Animator pathAnimator;
     private MeshRenderer currOrbRenderer;
@@ -21,7 +23,21 @@ public class OrbAlter : Interactable {
     [SerializeField] private OrbColorData colorData;
 
     private GameObject activeDisplayOrb;
-    
+
+    void Awake() {
+        MaterialPropertyBlock mpb = new();
+        planeRenderers[0].GetPropertyBlock(mpb);
+        Color color = targetColor.GetColor();
+        float sideWeight = 0.26f;
+        if (color.r == 0) color.r = sideWeight;
+        if (color.g == 0) color.g = sideWeight;
+        if (color.b == 0) color.b = sideWeight;
+        mpb.SetColor("_Color", color);
+       foreach (SpriteRenderer renderer in planeRenderers) {
+            renderer.SetPropertyBlock(mpb);
+       }
+    }
+
     //Uhhh yea this is pretty hardcoded for demo sake lmaoo
     public override void InteractAction(OrbThrownData data ) {
         ///base.InteractAction(data);
@@ -45,6 +61,7 @@ public class OrbAlter : Interactable {
             material.DOColor(orbColor  * 1.9f, "_Circuit_Color", 1f);
             Material[] materials = { material };
             pillar.materials = materials;
+            if (data.Color == targetColor) planeAnim.SetTrigger("Blink");
             CheckTogglables(new OrbThrownData(data.OrbObject, data.PushDirection, eColor));
         } else {
             StartCoroutine(DOColor(orbColor, new OrbThrownData(data.OrbObject, data.PushDirection, eColor)));
