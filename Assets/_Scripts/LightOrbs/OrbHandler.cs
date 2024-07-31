@@ -80,7 +80,7 @@ public class OrbHandler : MonoBehaviour
 
     public bool AddOrb(GameObject orb, bool setup = false) {
         if (_heldOrbsCount < _heldOrbs.Length) {
-            orb.SetActive(false);
+            if (setup) orb.SetActive(false);
             _heldOrbs[_heldOrbsCount] = orb;
             _heldOrbsCount++;
             if (!setup) OnInventoryOperation?.Invoke(ObjectToOrbArray());
