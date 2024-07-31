@@ -323,6 +323,9 @@ MonoBehaviour:
   - {fileID: 0}
   targetColor: 6
   planeAnim: {fileID: 4498132951873927678}
+  planeRenderers:
+  - {fileID: 1140436284493146158}
+  - {fileID: 952349971797433541}
   path: {fileID: 6500820606768143589}
   pathAnimator: {fileID: 6826434758968396139}
   colorData: {fileID: 6941257789045691949}
@@ -627,10 +630,40 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.19607843
       objectReference: {fileID: 0}
+    - target: {fileID: 7524207819771985488, guid: e58c2e31c1bcfb84181c35cf0efd5775,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7524207819771985488, guid: e58c2e31c1bcfb84181c35cf0efd5775,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7524207819771985488, guid: e58c2e31c1bcfb84181c35cf0efd5775,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7678517137413065403, guid: e58c2e31c1bcfb84181c35cf0efd5775,
         type: 3}
       propertyPath: m_Color.a
       value: 0.19607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678517137413065403, guid: e58c2e31c1bcfb84181c35cf0efd5775,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678517137413065403, guid: e58c2e31c1bcfb84181c35cf0efd5775,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678517137413065403, guid: e58c2e31c1bcfb84181c35cf0efd5775,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8065957553729135559, guid: e58c2e31c1bcfb84181c35cf0efd5775,
         type: 3}
@@ -642,6 +675,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e58c2e31c1bcfb84181c35cf0efd5775, type: 3}
+--- !u!212 &952349971797433541 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7678517137413065403, guid: e58c2e31c1bcfb84181c35cf0efd5775,
+    type: 3}
+  m_PrefabInstance: {fileID: 7474004951431616126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1140436284493146158 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7524207819771985488, guid: e58c2e31c1bcfb84181c35cf0efd5775,
+    type: 3}
+  m_PrefabInstance: {fileID: 7474004951431616126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &4498132951873927678 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6472917251287363456, guid: e58c2e31c1bcfb84181c35cf0efd5775,

@@ -27,6 +27,8 @@ public class SpotlightComponent : MonoBehaviour {
 
     private IEnumerator ColorSwapAction(Vector4 color) {
         float lerpVal = 0f;
+        float timer = 0;
+
         MaterialPropertyBlock mpb = new();
         spotlight.SetPropertyBlock(mpb);
         Vector4 currSColor = mpb.GetColor("_Color");
@@ -34,10 +36,11 @@ public class SpotlightComponent : MonoBehaviour {
         ringLight.SetPropertyBlock(mpb);
         Vector4 currRColor = mpb.GetColor("_Color");
         Vector4 currLightColor = lightComponent.color;
-        
-        while (lerpVal < lerpDuration) {
+
+        while (lerpVal < 1) {
             mpb = new();
-            lerpVal = Mathf.MoveTowards(lerpVal, lerpDuration, Time.deltaTime * 2);
+            timer = Mathf.MoveTowards(timer, lerpDuration, Time.deltaTime);
+            lerpVal = timer / lerpDuration;
             spotlight.GetPropertyBlock(mpb);
             Vector4 sColor = Vector4.Lerp(currSColor, color, lerpVal);
             mpb.SetVector("_Color", sColor * Mathf.Pow(2f, sIntensity));
