@@ -3,12 +3,7 @@ guid: 160c138994bbfdc4c88b6040cd5b3d6b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Black Veil
-    second: {fileID: 2100000, guid: e78345ecdd2e151469ae49e7eb7e061d, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
