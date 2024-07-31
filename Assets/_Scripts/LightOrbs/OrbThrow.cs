@@ -79,6 +79,8 @@ public class OrbThrow : MonoBehaviour {
 
     public void ThrowOrb() {
         // well shit i have to initialize this again bc i deactivate the object --> looking for solutions....
+        gameObject.SetActive(true);
+        StartCoroutine(Grow());
         _sender = GameObject.FindGameObjectWithTag("Player");
         _player = _sender.GetComponent<Player>();
         _t = this.transform;
@@ -88,6 +90,14 @@ public class OrbThrow : MonoBehaviour {
         _t.position = _throwPoint.position;
         _throwDirection = _throwPoint.forward * _player.ThrowDistance;
         StartCoroutine(Thrown());
+    }
+
+    private IEnumerator Grow() {
+        transform.localScale = Vector3.zero;
+        while (transform.localScale != Vector3.one * 0.3f) {
+            transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.one * 0.3f, Time.deltaTime);
+            yield return null;
+        }
     }
 
     IEnumerator Thrown() {
