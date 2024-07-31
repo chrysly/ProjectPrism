@@ -219,6 +219,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  coll: {fileID: 8473349618148041343}
+  rb: {fileID: 8400823669271404838}
   _color: 4
   shineFX: {fileID: 1258658716464563645}
   sparkFX: {fileID: 2019428800719891962}

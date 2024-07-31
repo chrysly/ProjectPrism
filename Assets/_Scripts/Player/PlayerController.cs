@@ -77,5 +77,5 @@ public class PlayerController : MonoBehaviour
 
     private void OrbHandler_OnThrowWindUp(List<EColor> _) => animator.SetTrigger("Throw");
 
-    private void PlayerThrow(GameObject orb) => orb.GetComponent<OrbThrow>().ThrowOrb();
+    private void PlayerThrow(OrbThrow orb) => orb.ThrowOrb();
 }
