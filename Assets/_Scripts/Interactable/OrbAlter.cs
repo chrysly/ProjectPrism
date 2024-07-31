@@ -78,7 +78,6 @@ public class OrbAlter : Interactable {
             if (gradBeamTarget != null) {
                 shineFX.SetGradient("Gradient Color", LerpGradient(gradShineInit, gradBeamTarget, lerpVal));
                 sparkFX.SetGradient("Gradient", LerpGradient(gradSparkInit, gradSparkTarget, lerpVal));
-                sparkFX.SetGradient("Color", LerpGradient(gradSparkInit, gradSparkTarget, lerpVal));
             } lerpVal = Mathf.MoveTowards(lerpVal, 1, Time.deltaTime * 2);
             MaterialPropertyBlock mpb = new();
             pillar.GetPropertyBlock(mpb);
