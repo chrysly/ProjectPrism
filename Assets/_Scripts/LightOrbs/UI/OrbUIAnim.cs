@@ -40,7 +40,7 @@ public class OrbUIAnim : MonoBehaviour
         _mainCanvas.DOFade(1, _fadeTime);
 
         // create the orb objects and set their initial color + position
-        for (int i = 0; i < _orbImgs.Length; ++i) {
+        for (int i = 0; i < cls.Count; ++i) {
             UIOrb obj = new UIOrb(_orbImgs[i], _bckgImgs[i].transform);
             _orbs.Add(obj);
             obj.SetOrbColor(cls[i]);
