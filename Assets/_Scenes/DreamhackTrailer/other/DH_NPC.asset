@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b3973fb29b73947a556b9a5835f79b, type: 3}
+  m_Name: DH_NPC
+  m_EditorClassIdentifier: 
+  _npcName: DreamhackNPC
+  _imageSeq:
+  - {fileID: 21300000, guid: 528e58feecf5c5942bdbab6453cae2cd, type: 3}
+  - {fileID: 21300000, guid: 1dd1ebb8ddef7e24e923023a5697902d, type: 3}
+  - {fileID: 21300000, guid: 7369019843ded3843af5b7197309ec4b, type: 3}
