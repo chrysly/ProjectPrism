@@ -52,10 +52,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 0.214
+    - _Darkness_Threshold: 0.17
+    - _Falloff_Point: 1
     - _Frequency: 2
-    - _Fresnel: 3.38
+    - _Fresnel: 4.7
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 16.948378, g: 1.8867049, b: 1.8867049, a: 0}
+    - _Color: {r: 22.627417, g: 22.627417, b: 22.627417, a: 0}
   m_BuildTextureStacks: []
