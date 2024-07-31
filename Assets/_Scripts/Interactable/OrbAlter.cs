@@ -49,9 +49,9 @@ public class OrbAlter : Interactable {
             if (activeDisplayOrb.TryGetComponent(out OrbThrow orbThrow)) {
                 shineFX = orbThrow.shineFX;
                 sparkFX = orbThrow.sparkFX;
-                Destroy(orbThrow);
+                orbThrow.enabled = false;
             }
-            if (activeDisplayOrb.TryGetComponent(out Rigidbody rb)) Destroy(rb);
+            if (activeDisplayOrb.TryGetComponent(out Rigidbody rb)) rb.isKinematic = true;
             activeDisplayOrb.transform.DOScale(0.6f, 1f);
             activeDisplayOrb.SetActive(true);
             currOrbRenderer = activeDisplayOrb.GetComponentInChildren<MeshRenderer>(true);
@@ -65,6 +65,31 @@ public class OrbAlter : Interactable {
             CheckTogglables(new OrbThrownData(data.OrbObject, data.PushDirection, eColor));
         } else {
             StartCoroutine(DOColor(orbColor, new OrbThrownData(data.OrbObject, data.PushDirection, eColor)));
+        }
+    }
+
+    public void ReleaseOrb(Player player) {
+        if (activeDisplayOrb != null && activeDisplayOrb.TryGetComponent(out OrbThrow orb)) {
+            StartCoroutine(IReleaseOrb(player, orb));
+        }
+    }
+
+    private IEnumerator IReleaseOrb(Player player, OrbThrow orb) {
+        pathAnimator.SetTrigger("Release");
+        yield return null;
+        while (!pathAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) {
+            orb.transform.position = path.position;
+            orb.transform.localScale = Vector3.MoveTowards(orb.transform.localScale, Vector3.one * 0.3f, Time.deltaTime);
+            yield return null;
+        }
+
+        orb.enabled = true;
+        orb.GetComponent<Rigidbody>().isKinematic = false;
+        orb.ForceReturn(player);
+        activeDisplayOrb = null;
+
+        while (orb.transform.localScale != Vector3.one * 0.3f) {
+            orb.transform.localScale = Vector3.MoveTowards(orb.transform.localScale, Vector3.one * 0.3f, Time.deltaTime);
         }
     }
 

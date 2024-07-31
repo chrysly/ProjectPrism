@@ -36,6 +36,11 @@ public class OrbThrow : MonoBehaviour {
     public VisualEffect sparkFX;
     private bool interrupt;
 
+    void Awake() {
+        if (!rb) rb = GetComponent<Rigidbody>();
+        if (!coll) coll = GetComponent<Collider>();
+    }
+
     void OnEnable() => OrbOn();
 
     void FixedUpdate() {
@@ -145,6 +150,7 @@ public class OrbThrow : MonoBehaviour {
         _player = player;
         _throwPoint = player.ThrowPoint;
         _thrown = false;
+        interrupt = false;
     }
 
     /// <summary>
@@ -179,7 +185,7 @@ public class OrbThrow : MonoBehaviour {
     /// NPC ABSORB PLACEHOLDER. REMOVE AFTER DREAMHACK!
     /// </summary>
     private IEnumerator NPCAbsorb(Transform nTran) {
-        if (TryGetComponent(out Rigidbody rb)) Destroy(rb);
+        if (TryGetComponent(out Rigidbody rb)) rb.isKinematic = true;
         while (transform.localScale != Vector3.zero) {
             transform.position = Vector3.MoveTowards(transform.position, nTran.position, Time.deltaTime * 2);
             transform.localScale = Vector3.MoveTowards(transform.localScale, Vector3.zero, Time.deltaTime);
@@ -192,7 +198,7 @@ public class OrbThrow : MonoBehaviour {
     /// </summary>
     /// <returns></returns>
     private IEnumerator PillarOrbit(OrbAlter alter, OrbThrownData data) {
-        if (TryGetComponent(out Rigidbody rb)) { Destroy(rb); }
+        if (TryGetComponent(out Rigidbody rb)) { rb.isKinematic = true; }
         while (_t.position != alter.path.position) {
             _t.position = Vector3.MoveTowards(_t.position, alter.path.position, _player.ThrowForce * Time.deltaTime);
             yield return null;
