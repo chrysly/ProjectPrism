@@ -50,9 +50,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Brightness: 0.01
     - _EdgeGlowChangeSpeed: 2.5
-    - _EdgeGlowOscillation: 0.01
-    - _EdgeGlowOscillationSpeed: 1
     - _EdgeGlowSChange: 0.35
     - _EdgeGlowStrength: 0.75
     - _EdgeGlowTChange: 0.015
@@ -71,7 +70,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _EdgeGlowThickness: {r: 0.025, g: 0.035, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0.6078432, b: 1, a: 0.1960784}
-    - _GlowStrengthMinMax: {r: 0, g: 20, b: 0, a: 0}
+    - _GlowStrengthMinMax: {r: 0, g: 25, b: 0, a: 0}
     - _ScanlineVelocity: {r: 0, g: 0.1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5586931921518248450
