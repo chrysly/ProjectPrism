@@ -21,55 +21,25 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Omg
-  m_Shader: {fileID: -6465566751694194690, guid: e464ca37ac10c7f4f9266f5505fc0bdb,
-    type: 3}
-  m_Parent: {fileID: 0}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Parent: {fileID: 2100000, guid: ac2b93ffc6f1be24fac213fb7d166f63, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _EMISSION
+  m_InvalidKeywords:
   - ADDITIONAL_LIGHT_CALCULATE_SHADOWS
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _AddAdditionalLightsCustomFunction_cc165279e9a14e1aacb8ee4ddc8d0375_Posterization_10_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 9875244e50551a243847681c9acbf432, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _AddAdditionalLights_4928e6a6c0b947a685339f1f81c2db1a_Posterization_1666173476_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 9875244e50551a243847681c9acbf432, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Gradient:
-        m_Texture: {fileID: 2800000, guid: 9875244e50551a243847681c9acbf432, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Posterization:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - ADDITIONAL_LIGHT_CALCULATE_SHADOWS: 1
-    - _QueueControl: 0
-    - _QueueOffset: 0
+    m_Floats: []
     m_Colors: []
   m_BuildTextureStacks: []

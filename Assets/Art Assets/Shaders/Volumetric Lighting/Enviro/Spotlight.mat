@@ -55,7 +55,7 @@ Material:
     - _Darkness_Threshold: 0.17
     - _Falloff_Point: 1
     - _Frequency: 2
-    - _Fresnel: 4.7
+    - _Fresnel: 2.4
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
