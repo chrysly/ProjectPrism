@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d40c70d4c92f1bd4dad30bbc7c5c994e, type: 3}
-  m_Name: PlayerData
+  m_Name: PlayerData_Cinematic
   m_EditorClassIdentifier: 
   actorName: Player
   test: 0
@@ -18,7 +18,7 @@ MonoBehaviour:
   _throwCooldown: 2
   _throwForce: 13
   _throwDistance: 6
-  _moveSpeed: 2
+  _moveSpeed: 1
   _turnSpeed: 675
   _linearDrag: 20
   _moveAccel: 15
