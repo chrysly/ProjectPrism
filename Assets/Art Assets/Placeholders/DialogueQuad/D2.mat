@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: D2
+  m_Shader: {fileID: -6465566751694194690, guid: eea79f4882b1c574e8da80b6edac6797,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _GlowWireframeTexture:
+        m_Texture: {fileID: 2800000, guid: 73bc31650339a184b84baa6d9d1ae0a3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 1dd1ebb8ddef7e24e923023a5697902d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ScanlineTexture:
+        m_Texture: {fileID: 2800000, guid: ec25f02d888786047b2b6e86b205ea67, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Brightness: 0.01
+    - _EdgeGlowChangeSpeed: 2.5
+    - _EdgeGlowSChange: 0.35
+    - _EdgeGlowStrength: 0.75
+    - _EdgeGlowTChange: 0.015
+    - _GlowNoiseScale: 2
+    - _GlowSpeed: 1
+    - _MainScanlineSpeed: 0.2
+    - _MainScanlineStrength: 0.2
+    - _MainScanlineThickness: 0.01
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _ScanlineStrength: 0.05
+    - _Smoothness: 0
+    - _WireframeStrength: 0.001
+    m_Colors:
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EdgeGlowThickness: {r: 0.025, g: 0.035, b: 0, a: 0}
+    - _EmissionColor: {r: 0, g: 0.6078432, b: 1, a: 0.1960784}
+    - _GlowStrengthMinMax: {r: 0, g: 25, b: 0, a: 0}
+    - _ScanlineVelocity: {r: 0, g: 0.1, b: 0, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &5586931921518248450
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
