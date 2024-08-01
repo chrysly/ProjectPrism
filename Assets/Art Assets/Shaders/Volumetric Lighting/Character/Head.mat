@@ -51,14 +51,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _BStrength: 0
     - _EmissiveOffsetPoint: 0
     - _EmissiveStep: 2.35
     - _EmsisivePower: 2.34
+    - _GStrength: 0
     - _Offset_Point: 2.32
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _RStrength: 0
     m_Colors:
-    - _Color: {r: 0.690566, g: 0.690566, b: 0.690566, a: 0}
+    - _Blue: {r: 0, g: 0, b: 0.37450984, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _Emissive: {r: 0.40138966, g: 0.09315267, b: 0.09315267, a: 0}
+    - _Green: {r: 0, g: 0.37450984, b: 0, a: 0}
     - _LightColor: {r: 0.735849, g: 0.24852253, b: 0.24852253, a: 0}
+    - _Red: {r: 0.37450984, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

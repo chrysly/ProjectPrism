@@ -5,7 +5,9 @@ using UnityEngine;
 public class ResetSwitch : MonoBehaviour {
 
     [SerializeField] private OrbThrow[] orbs;
+    [SerializeField] private OrbAlter[] alters;
     [SerializeField] private Animator planeAnim;
+    [SerializeField] private Animator switchAnim;
 
     void OnTriggerEnter(Collider other) {
         if (other.TryGetComponent(out Player player)) {
@@ -13,13 +15,17 @@ public class ResetSwitch : MonoBehaviour {
                 orb.gameObject.SetActive(true);
                 orb.ForceReturn(player);
             }
-            //planeAnim.SetTrigger("");
+            foreach (OrbAlter alter in alters) {
+                alter.ReleaseOrb(player);
+            }
+            switchAnim.SetTrigger("Press");
+            planeAnim.SetTrigger("PushBlink");
         }
     }
 
     void OnTriggerExit(Collider other) {
-        if (other.TryGetComponent(out Player plater)) {
-            //planeAnim.SetTrigger("");
+        if (other.TryGetComponent(out Player _)) {
+            switchAnim.SetTrigger("Unpress");
         }
     }
 }

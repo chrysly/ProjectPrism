@@ -58,7 +58,7 @@ Material:
     - _QueueOffset: 0
     - _RStrength: 1
     m_Colors:
-    - _Blue: {r: 0, g: 0, b: 8, a: 0}
-    - _Green: {r: 0, g: 8, b: 0, a: 0}
-    - _Red: {r: 8, g: 0, b: 0, a: 0}
+    - _Blue: {r: 0, g: 0, b: 0.7490196, a: 0}
+    - _Green: {r: 0, g: 0.7490196, b: 0, a: 0}
+    - _Red: {r: 0.7490196, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
